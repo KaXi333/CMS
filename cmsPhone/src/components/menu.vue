@@ -47,7 +47,8 @@ export default {
 			              path:"countInforPage"
 			            },
 			            {
-			              name: '修改密码'
+			              name: '修改密码',
+			              path:"changePwPage"
 			            },
 			            {
 			              name: '资金管理',
@@ -65,7 +66,8 @@ export default {
 	    			title:"银行卡管理",
 	    			list:[
 		    			{
-			              name: '添加银行卡'
+			              name: '添加银行卡',
+			              path:"bankCardPage"
 			            },
 			            {
 			              name: '银行卡列表'
@@ -87,13 +89,10 @@ export default {
 	    			title:"订单管理",
 	    			list:[
 		    			{
-			              name: '账户信息'
+			              name: '订单查询'
 			            },
 			            {
-			              name: '修改密码'
-			            },
-			            {
-			              name: '资金管理'
+			              name: '汇总查询'
 			            }
 	    			]
 	    		},
@@ -101,10 +100,10 @@ export default {
 	    			title:"管理员",
 	    			list:[
 		    			{
-			              name: '添加银行卡'
+			              name: '新增管理员'
 			            },
 			            {
-			              name: '银行卡列表'
+			              name: '管理员列表'
 			            }
 	    			]
 	    		},
@@ -112,10 +111,13 @@ export default {
 	    			title:"结算管理",
 	    			list:[
 		    			{
-			              name: '添加银行卡'
+			              name: '申请结算'
 			            },
 			            {
-			              name: '银行卡列表'
+			              name: '批量申请'
+			            },
+			            {
+			              name: '结算查询'
 			            }
 	    			]
 	    		},

@@ -52,7 +52,7 @@ export default {
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
+small, strike, strong, sub, sup, tt, var,button,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
@@ -68,6 +68,29 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 li{list-style: none;}
+  .changePass-select{
+    padding:30px 0 30px 30px;
+    height:80px;
+    border-bottom: 1px solid #F0F0F0
+  }
+  .changePass-tab{
+    font-size: 28px;
+    line-height: 80px;
+    float:left;
+    margin-right: 30px;
+    padding: 0 25px;
+    background: #E0E0E0;
+    color:#4F4F4F;
+    min-width: 130px;
+    border-radius: 8px;
+  }
+  .changePass-tab-bc{
+    background:#009688;
+    color:#fff; 
+  }
+  //以上为公共样式
+
+
   .icon-caidan{
     font-size:70px;
     float: right;

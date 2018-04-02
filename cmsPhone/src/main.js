@@ -6,6 +6,8 @@ import VueRouter from 'vue-router'
 import IndexPage from './pages/index'
 import countInforPage from './pages/countInformation'
 import moneyAdminPage from './pages/moneyAdmin'
+import changePwPage from './pages/changePassword'
+import bankCardPage from './pages/bankCard'
 
 Vue.use(VueRouter)
 let router = new VueRouter({
@@ -20,8 +22,16 @@ let router = new VueRouter({
 			component:countInforPage
 		},
 		{
+			path:'/changePwPage',
+			component:changePwPage
+		},
+		{
 			path:'/moneyAdminPage',
 			component:moneyAdminPage
+		},
+		{
+			path:'/bankCardPage',
+			component:bankCardPage
 		}
 	]
 })

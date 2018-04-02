@@ -1,7 +1,7 @@
 <template>
 	<div class="selection-component">
 		<div class="selection-show" @click="toggleDrop">
-        	<span class="selection-value">{{selections[nowIndex].label}}</span>
+        	<span :class="{chooClasscolor:0===nowIndex}" class="selection-value">{{selections[nowIndex].label}}</span>
             <i class="iconfont icon-sanjiao"></i>
       	</div>
       	<div class="selection-list" v-if="isDrop">
@@ -36,7 +36,7 @@ export default {
 		chooseSelection(index){
 			this.nowIndex=index
 			this.isDrop=false
-			this.$emit('on-change',this,nowIndex)
+			this.$emit('on-change',this.nowIndex)
 		}
 	}
 }
@@ -45,25 +45,27 @@ export default {
 <style scoped>
 	.selection-component {
 		position: relative;
-  		display: inline-block;
+  	display: inline-block;
+  	margin-right: 10px;
 	}
 	.icon-sanjiao{font-size: 50px;float: right}
 	.selection-show {
 		display: inline-block;
 		position: relative;
-		padding: 0 20px 0 10px;
+		padding-left: 10px;
 	    border: 1px solid #e3e3e3;
 	    cursor: pointer;
-	    height: 49px;
-	    line-height: 49px;
-	    text-align: center;
+	    height: 59px;
+	    line-height: 59px;
 	    background: #fff;
+	    width: 230px;
+	    font-size: 30px;
 	}
 	.selection-list {
 		display: inline-block;
 		position: absolute;
 		left:0;
-		top:50px;
+		top:60px;
 	    width: 100%;
 	    background: #fff;
 	    border-top: 1px solid #e3e3e3;
@@ -71,7 +73,9 @@ export default {
 	    z-index: 5;
 	}
 	.selection-list li {
-	  padding: 5px 15px 5px 10px;
+	  padding: 0 10px;
+	  height:60px;
+	  line-height: 60px;
 	  border-left: 1px solid #e3e3e3;
 	  border-right: 1px solid #e3e3e3;
 	  cursor: pointer;
@@ -79,8 +83,14 @@ export default {
 	  white-space: nowrap;
 	  overflow: hidden;
 	  text-overflow: ellipsis;
+	  font-size: 30px;
 	}
 	.selection-list li:hover {
 	  background: #e3e3e3;
 	}
+	li:first-child
+	{
+	 color:#AAAAAA;
+	}
+	.chooClasscolor{color:#AAAAAA;}
 </style>
