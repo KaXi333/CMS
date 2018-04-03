@@ -47,10 +47,6 @@ export default {
 			              path:"countInforPage"
 			            },
 			            {
-			              name: '修改密码',
-			              path:"changePwPage"
-			            },
-			            {
 			              name: '资金管理',
 			              path:"moneyAdminPage"
 			            }
@@ -58,7 +54,7 @@ export default {
 	    		},
 	    		{
 	    			title:"公告信息",
-	    			path:"/",
+	    			path:"publicSignPage",
 	    			list:[
 	    			]
 	    		},
@@ -96,7 +92,8 @@ export default {
 			              path:"orderQueryPage"
 			            },
 			            {
-			              name: '汇总查询'
+			              name: '汇总查询',
+			              path:"orderQuerySumPage"
 			            }
 	    			]
 	    		},
@@ -104,10 +101,12 @@ export default {
 	    			title:"管理员",
 	    			list:[
 		    			{
-			              name: '新增管理员'
+			              name: '新增管理员',
+			              path:"addAdminPage"
 			            },
 			            {
-			              name: '管理员列表'
+			              name: '管理员列表',
+			              path:"adminListPage"
 			            }
 	    			]
 	    		},
@@ -128,6 +127,18 @@ export default {
 	    		{
 	    			title:"安全中心",
 	    			list:[
+	    			]
+	    		},
+	    		{
+	    			title:"欢迎, jay",
+	    			list:[
+    					{
+	              name: '修改密码',
+	              path:"changePwPage"
+	            },
+	            {
+	              name: '退出'
+	            }
 	    			]
 	    		}
 	    	]	

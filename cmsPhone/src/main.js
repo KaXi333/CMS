@@ -6,12 +6,16 @@ import VueRouter from 'vue-router'
 import IndexPage from './pages/index'
 import countInforPage from './pages/countInformation'
 import moneyAdminPage from './pages/moneyAdmin'
+import publicSignPage from './pages/publicSign'
 import changePwPage from './pages/changePassword'
 import bankCardPage from './pages/bankCard'
 import bankCardListPage from './pages/bankCardList'
 import receiptPage from './pages/receipt'
 import payPage from './pages/pay'
 import orderQueryPage from './pages/orderQuery'
+import orderQuerySumPage from './pages/orderQuerySum'
+import addAdminPage from './pages/addAdmin'
+import adminListPage from './pages/adminList'
 
 Vue.use(VueRouter)
 let router = new VueRouter({
@@ -34,6 +38,10 @@ let router = new VueRouter({
 			component:moneyAdminPage
 		},
 		{
+			path:'/publicSignPage',
+			component:publicSignPage
+		},
+		{
 			path:'/bankCardPage',
 			component:bankCardPage
 		},
@@ -52,7 +60,19 @@ let router = new VueRouter({
 		{
 			path:'/orderQueryPage',
 			component:orderQueryPage
-		}
+		},
+		{
+			path:'/orderQuerySumPage',
+			component:orderQuerySumPage
+		},
+		{
+			path:'/addAdminPage',
+			component:addAdminPage
+		},
+		{
+			path:'/adminListPage',
+			component:adminListPage
+		},
 	]
 })
 Vue.config.productionTip = false

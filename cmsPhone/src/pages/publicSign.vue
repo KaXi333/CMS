@@ -1,16 +1,6 @@
 <template>
 	<div class="oderQuery-continer">
-		<div class="oderQuery-box">
-			<div class="input-value"><input type="text" placeholder="请输入交易号"></div>
-			<div class="input-value"><input type="text" placeholder="请输入商户交易号"></div>
-			<div class="input-value"><input type="text" placeholder="请输入商户名称"></div>
-			<div class="input-value"><input type="text" placeholder="请输入日期"></div>
-			<v-selection :selections="payTypes"></v-selection>
-			<v-selection :selections="stateTypes"></v-selection>
-			<button class="checkBtn" type="">查询</button>
-			<button class="checkBtn" type="">导出</button>
-		</div>
-		<div class="lotNotice"><button class="checkBtn" type="" style="width:80px;">批量通知</button></div>
+		<div class="lotNotice"><button class="checkBtn" type="">标记为已读</button></div>
 		<div class="list-box">
 			<div class="list-content">
 				<div class="list-title-box">
@@ -24,12 +14,7 @@
 							<li class="list-item">{{item.name}}</li>
 							<li class="list-item">{{item.state}}</li>
 							<li class="list-item">{{item.rate}}</li>
-							<li class="list-item">{{item.minSum}}</li>
-							<li class="list-item">{{item.maxSum}}</li>
-							<li class="list-item">{{item.md5Key}}</li>
-							<li class="list-item">{{item.signTime}}</li>
-							<li class="list-item">{{item.expireTime}}</li>
-							<li class="list-item"><button class="detailBtn">详情</button></li>
+							<li class="list-item"><button class="detailBtn">查看</button></li>
 						</ul>
 					</div>
 				</div>
@@ -113,63 +98,33 @@ export default {
     		  {
 	          name: 'T0结算',
 	          state: '正常' ,
-	          rate: '1',
-	          minSum: '0.01',
-	          maxSum: '3000:00' ,
-	          md5Key: '1:00' ,
-	          signTime: '2018-03-17 00:00:00' ,
-	          expireTime: '2019-03-17 00:00:00' 
+	          rate: '1'
 	        },
 	        {
 	          name: 'D0结算',
 	          state: '正常' ,
-	          rate: '2',
-	          minSum: '100:00',
-	          maxSum: '1000:00' ,
-	          md5Key: '0.02' ,
-	          signTime: '2018-03-17 00:00:00' ,
-	          expireTime: '2019-03-17 00:00:00' 
+	          rate: '2'
 	        },
 	        {
 	          name: 'T1结算',
 	          state: '正常' ,
-	          rate: '1',
-	          minSum: '30:00',
-	          maxSum: '8700:00' ,
-	          md5Key: '0.50' ,
-	          signTime: '2018-03-17 00:00:00' ,
-	          expireTime: '2019-03-17 00:00:00' 
+	          rate: '1'
 	        },
 	        {
 	          name: 'T1结算',
 	          state: '正常' ,
-	          rate: '1',
-	          minSum: '1:00',
-	          maxSum: '4500:00' ,
-	          md5Key: '0.05' ,
-	          signTime: '2018-03-17 00:00:00' ,
-	          expireTime: '2019-03-17 00:00:00' 
+	          rate: '1'
 	        },
 	        {
 	          name: 'T0结算',
 	          state: '正常' ,
-	          rate: '2',
-	          minSum: '260:00',
-	          maxSum: '8700:00' ,
-	          md5Key: '0.80' ,
-	          signTime: '2018-03-17 00:00:00' ,
-	          expireTime: '2019-03-17 00:00:00' 
+	          rate: '2'
 	        }
 	    	],
 	    	bankTitles:[
-	    		"创建时间",
-	    		"商户名称",
-	    		"平台订单号",
-	    		"商户订单号",
-	    		"交易金额",
-	    		"手续费",
-	    		"类型",
+	    		"标题",
 	    		"状态",
+	    		"发布时间",
 	    		"操作"
 	    	]
 		} 
@@ -179,7 +134,7 @@ export default {
 
 <style scoped>
 	.oderQuery-continer{
-		padding:20px 15px;
+		padding: 0 15px;
 	}
 	.oderQuery-box{
 		background: #F0F0F0;
@@ -188,10 +143,10 @@ export default {
 	}
 	.oderQuery-box:after{
 		display: block;
-    visibility: hidden;
-    clear: both;
-    height:0;
-    content: ".";
+	    visibility: hidden;
+	    clear: both;
+	    height:0;
+	    content: ".";
 	}
 	.input-value{
 		margin-right: 30px;
@@ -202,12 +157,13 @@ export default {
 	}
 	.checkBtn{
 		margin-right: 10px;
+		width: 180px;
 	}
 	.lotNotice{
 		margin: 30px 0;
 	}
 	.list-content{
-		width: 2099px;
+		width: 900px;
 		margin-top: 0;
 	}
 	.input-checkbox{

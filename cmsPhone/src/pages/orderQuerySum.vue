@@ -1,26 +1,18 @@
 <template>
 	<div class="oderQuery-continer">
 		<div class="oderQuery-box">
-			<div class="input-value"><input type="text" placeholder="请输入交易号"></div>
-			<div class="input-value"><input type="text" placeholder="请输入商户交易号"></div>
-			<div class="input-value"><input type="text" placeholder="请输入商户名称"></div>
-			<div class="input-value"><input type="text" placeholder="请输入日期"></div>
 			<v-selection :selections="payTypes"></v-selection>
 			<v-selection :selections="stateTypes"></v-selection>
 			<button class="checkBtn" type="">查询</button>
-			<button class="checkBtn" type="">导出</button>
 		</div>
-		<div class="lotNotice"><button class="checkBtn" type="" style="width:80px;">批量通知</button></div>
 		<div class="list-box">
 			<div class="list-content">
 				<div class="list-title-box">
-				  <h3 class="list-title"><input @click="checkedAll" v-model='checked' type="checkbox" class="input-checkbox"></h3>
 					<h3 class="list-title" v-for="(item,index) in bankTitles">{{item}}</h3>
 				</div>
 				<div class="list-value-box">
 					<div class="list-value" v-for="(item,index) in bankCardLists">
 						<ul class="clearFloat">
-						  <li class="list-item"><input v-model='checkboxModel' type="checkbox" class="input-checkbox"></li>
 							<li class="list-item">{{item.name}}</li>
 							<li class="list-item">{{item.state}}</li>
 							<li class="list-item">{{item.rate}}</li>
@@ -29,7 +21,6 @@
 							<li class="list-item">{{item.md5Key}}</li>
 							<li class="list-item">{{item.signTime}}</li>
 							<li class="list-item">{{item.expireTime}}</li>
-							<li class="list-item"><button class="detailBtn">详情</button></li>
 						</ul>
 					</div>
 				</div>
@@ -55,24 +46,6 @@ export default {
 	},
 	data () {
 	    return {
-	    	checked:false,
-	    	checkboxModel:["1","2","4"],
-	    	checkboxData:[{
-		      id:'1',
-		      value:'苹果'
-		    },{
-		      id:'2',
-		      value:'荔枝'
-		    },{
-		      id:'3',
-		      value:'香蕉'
-		    },{
-		      id:'4',
-		      value:'火龙果'
-		    },{
-		      id:'5',
-		      value:'西瓜'
-		    }],
 	    	payTypes:[
 	    		{
 		          label: '全部方式',
@@ -188,10 +161,10 @@ export default {
 	}
 	.oderQuery-box:after{
 		display: block;
-    visibility: hidden;
-    clear: both;
-    height:0;
-    content: ".";
+	    visibility: hidden;
+	    clear: both;
+	    height:0;
+	    content: ".";
 	}
 	.input-value{
 		margin-right: 30px;
@@ -208,7 +181,7 @@ export default {
 	}
 	.list-content{
 		width: 2099px;
-		margin-top: 0;
+		margin-top: 50px;
 	}
 	.input-checkbox{
 
@@ -221,40 +194,35 @@ export default {
 		color:#fff;
 		background: #009688;
 	}
-	li:nth-child(1){
-		width: 80px;
-	}
-	li:nth-child(2){
-		width: 120px;
-	}
-	li:nth-child(3){
-		width: 200px;
-	}
+	.list-content{width: 2499px;}
 	li:nth-child(4){
 		width: 250px;
 	}
-	li:nth-child(8){
+	li:nth-child(5){
+		width: 250px;
+	}
+	li:nth-child(6){
+		width: 550px;
+	}
+	li:nth-child(7){
 		width: 300px;
 	}
-	li:nth-child(9){
+	li:last-child{
 		width: 300px;
-	}
-	h3:nth-child(1){
-		width: 80px;
-	}
-	h3:nth-child(2){
-		width: 120px;
-	}
-	h3:nth-child(3){
-		width: 200px;
 	}
 	h3:nth-child(4){
 		width: 250px;
 	}
-	h3:nth-child(8){
+	h3:nth-child(5){
+		width: 250px;
+	}
+	h3:nth-child(6){
+		width: 550px;
+	}
+	h3:nth-child(7){
 		width: 300px;
 	}
-	h3:nth-child(9){
+	h3:last-child{
 		width: 300px;
 	}
 
