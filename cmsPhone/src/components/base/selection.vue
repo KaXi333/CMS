@@ -53,13 +53,13 @@ export default {
 		display: inline-block;
 		position: relative;
 		padding-left: 10px;
-	    border: 1px solid #e3e3e3;
+	    border: 1px solid #E0E0E0;
 	    cursor: pointer;
 	    height: 59px;
 	    line-height: 59px;
 	    background: #fff;
-	    width: 230px;
-	    font-size: 30px;
+	    min-width: 170px;
+	    font-size: 26px;
 	}
 	.selection-list {
 		display: inline-block;
@@ -83,7 +83,7 @@ export default {
 	  white-space: nowrap;
 	  overflow: hidden;
 	  text-overflow: ellipsis;
-	  font-size: 30px;
+	  font-size: 26px;
 	}
 	.selection-list li:hover {
 	  background: #e3e3e3;

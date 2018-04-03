@@ -70,7 +70,8 @@ export default {
 			              path:"bankCardPage"
 			            },
 			            {
-			              name: '银行卡列表'
+			              name: '银行卡列表',
+			              path:"bankCardListPage"
 			            }
 	    			]
 	    		},
@@ -78,10 +79,12 @@ export default {
 	    			title:"业务管理",
 	    			list:[
 		    			{
-			              name: '收款业务'
+			              name: '收款业务',
+			              path:"receiptPage"
 			            },
 			            {
-			              name: '贷款业务'
+			              name: '付款业务',
+			              path:"payPage"
 			            }
 	    			]
 	    		},
@@ -89,7 +92,8 @@ export default {
 	    			title:"订单管理",
 	    			list:[
 		    			{
-			              name: '订单查询'
+			              name: '订单查询',
+			              path:"orderQueryPage"
 			            },
 			            {
 			              name: '汇总查询'

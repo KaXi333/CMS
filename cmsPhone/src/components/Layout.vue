@@ -40,7 +40,7 @@ export default {
     return {
       isShowMenuList:false,
       ifAddClassLeft:false,
-      tabCont:"后台管理"
+      tabCont:"后台首页"
     }
   }
 }
@@ -55,7 +55,7 @@ del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,button,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
+fieldset, form, label, legend,input,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
@@ -88,6 +88,71 @@ li{list-style: none;}
     background:#009688;
     color:#fff; 
   }
+  .checkBtn{
+    height:60px;
+    border: none;
+    width: 120px;
+    background: #009688;
+    color:#fff;
+    font-size: 28px;
+    line-height: 60px;
+  }
+  .input-value{
+    float:left;
+    height: 60px;
+    line-height: 60px;
+    font-size: 26px;
+    
+  }
+  .input-value input{
+    height: 60px;
+    padding-left: 16px;
+    width: 400px;
+    outline: none;
+    border: none;
+    background: #fff;
+    line-height: 60px;
+    font-size: 26px;
+    border: 1px solid #E0E0E0;
+  }
+  
+
+  .list-box{
+    width: 100%;
+    overflow:hidden;
+    overflow-x:auto;
+  }
+  .list-content{
+    border:1px solid #E0E0E0;
+    margin-top: 50px;
+    width: 1407px;
+    
+  }
+  .list-title-box{
+    background: #F0F0F0;
+    height:80px;
+    line-height: 80px;
+  }
+  .list-title,.list-item{
+    width: 200px;
+    float:left;
+    height:80px;
+    line-height: 80px;
+    text-align: center;
+    border-right: 1px solid #E0E0E0;
+    font-size: 26px;
+  }
+  .clearFloat:after{
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height:0;
+    content: ".";
+  }
+  .clearFloat{
+    zoom:1;
+  }
+
 
 
   .icon-caidan{

@@ -8,6 +8,10 @@ import countInforPage from './pages/countInformation'
 import moneyAdminPage from './pages/moneyAdmin'
 import changePwPage from './pages/changePassword'
 import bankCardPage from './pages/bankCard'
+import bankCardListPage from './pages/bankCardList'
+import receiptPage from './pages/receipt'
+import payPage from './pages/pay'
+import orderQueryPage from './pages/orderQuery'
 
 Vue.use(VueRouter)
 let router = new VueRouter({
@@ -32,6 +36,22 @@ let router = new VueRouter({
 		{
 			path:'/bankCardPage',
 			component:bankCardPage
+		},
+		{
+			path:'/bankCardListPage',
+			component:bankCardListPage
+		},
+		{
+			path:'/receiptPage',
+			component:receiptPage
+		},
+		{
+			path:'/payPage',
+			component:payPage
+		},
+		{
+			path:'/orderQueryPage',
+			component:orderQueryPage
 		}
 	]
 })

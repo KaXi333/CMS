@@ -5,32 +5,26 @@
 			<v-selection :selections="chooseMoneyTypes"></v-selection>
 			<button class="checkBtn" type="">查询</button>
 		</div>
-		<div class="moneyAdmin-box">
-			<div class="moneyAdmin-content">
-				<div class="moneyAdmin-title-box">
-					<h3 class="moneyAdmin-title">账户名称</h3>
-					<h3 class="moneyAdmin-title">流动类型</h3>
-					<h3 class="moneyAdmin-title">资金类型</h3>
-					<h3 class="moneyAdmin-title">流动前资金</h3>
-					<h3 class="moneyAdmin-title">流动资金</h3>
-					<h3 class="moneyAdmin-title">流动后资金</h3>
-					<h3 class="moneyAdmin-title">备注</h3>
+		<div class="list-box">
+			<div class="list-content">
+				<div class="list-title-box">
+					<h3 class="list-title" v-for="(item,index) in checkTitleList">{{item}}</h3>
 				</div>
-				<div class="moneyAdmin-value-box">
-					<div class="moneyAdmin-value" v-for="(item,index) in monAdmList">
+				<div class="list-value-box">
+					<div class="list-value" v-for="(item,index) in monAdmList">
 						<ul class="clearFloat">
-							<li class="moneyAdmin-item">{{item.name}}</li>
-							<li class="moneyAdmin-item">{{item.flowType}}</li>
-							<li class="moneyAdmin-item">{{item.moneyType}}</li>
-							<li class="moneyAdmin-item">{{item.flowBeformonery}}</li>
-							<li class="moneyAdmin-item">{{item.flowmonery}}</li>
-							<li class="moneyAdmin-item">{{item.flowAftermonery}}</li>
-							<li class="moneyAdmin-item">{{item.note}}</li>
+							<li class="list-item">{{item.name}}</li>
+							<li class="list-item">{{item.flowType}}</li>
+							<li class="list-item">{{item.moneyType}}</li>
+							<li class="list-item">{{item.flowBeformonery}}</li>
+							<li class="list-item">{{item.flowmonery}}</li>
+							<li class="list-item">{{item.flowAftermonery}}</li>
+							<li class="list-item">{{item.note}}</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-		</div>
+	  </div>
 	</div>
 </template>
 
@@ -120,6 +114,15 @@ export default {
 		          flowAftermonery: '3112',
 		          note: 'T1余额'
 		        }
+	    	],
+	    	checkTitleList:[
+	    		"账户名称",
+	    		"流动类型",
+	    		"资金类型",
+	    		"流动前资金",
+	    		"流动资金",
+	    		"流动后资金",
+	    		"备注"
 	    	]
 		} 
 	}
@@ -132,46 +135,6 @@ export default {
 		background: #F0F0F0;
 		padding: 20px;
 	}
-	.checkBtn{
-		height:60px;
-		border: none;
-		width: 120px;
-		background: #009688;
-		color:#fff;
-	}
-	.moneyAdmin-box{
-		width: 100%;
-		overflow:hidden;
-		overflow-x:auto;
-	}
-	.moneyAdmin-content{
-		border:1px solid #E0E0E0;
-		margin-top: 50px;
-		width: 1407px;
-		
-	}
-	.moneyAdmin-title-box{
-		background: #F0F0F0;
-		height:80px;
-		line-height: 80px;
-	}
-	.moneyAdmin-title,.moneyAdmin-item{
-		width: 200px;
-		float:left;
-		height:80px;
-		line-height: 80px;
-		text-align: center;
-		border-right: 1px solid #E0E0E0
-	}
-	.clearFloat:after{
-		display: block;
-		visibility: hidden;
-		clear: both;
-		height:0;
-		content: ".";
-	}
-	.clearFloat{
-		zoom:1;
-	}
+	
 	
 </style>
