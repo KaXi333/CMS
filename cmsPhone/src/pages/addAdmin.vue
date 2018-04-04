@@ -3,22 +3,22 @@
 		<div class="changePass-border">
 			<div class="changePass-box">
 				<h3 class="changePass-name">名称</h3>
-				<div class="input-value"><input type="password" placeholder="请输入名称"></div>
+				<div class="input-value"><input v-model="userModel" type="text" placeholder="请输入名称"></div>
 			</div>
 			<div class="changePass-box">
 				<h3 class="changePass-name">邮箱</h3>
-				<div class="input-value"><input type="password" placeholder="请输入邮箱"></div>
+				<div class="input-value"><input v-model="usernameModel" type="password" placeholder="请输入邮箱"></div>
 			</div>
 			<div class="changePass-box">
 				<h3 class="changePass-name">密码</h3>
-				<div class="input-value"><input type="password" placeholder="请输入密码"></div>
+				<div class="input-value"><input v-model="userpasswordModel" type="password" placeholder="请输入密码"></div>
 			</div>
 			<div class="changePass-box">
 				<h3 class="changePass-name">确认密码</h3>
-				<div class="input-value"><input type="password" placeholder="请输入确认密码"></div>
+				<div class="input-value"><input v-model="conuserpasswordModel" type="password" placeholder="请输入确认密码"></div>
 			</div>
 			<div class="changePass-btn changePass-box">
-				<button class="changePass-tab changePass-tab-bc">立即提交</button>
+				<button class="changePass-tab changePass-tab-bc" @click="addAdmin">立即提交</button>
 			<button class="changePass-tab">重置</button>
 			</div>
 		</div>
@@ -29,8 +29,13 @@
 export default {
 	data () {
 	    return {
-	    	
+	    	 
 		} 
+	},
+	methods:{
+		addAdmin(){
+			
+		}
 	}
 }
 </script>

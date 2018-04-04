@@ -5,7 +5,8 @@
 	        <h3 @click="goPathTo(menu.list!='',menu.title,menu.path)" class="sidemenu-title" :class="{chooMenuList:index===nowIndex}">{{menu.title}}<i v-if="menu.list!=''" class="iconfont" :class="[index===nowIndex?'icon-xiaosanjiaoup':'icon-sanjiao']"></i></h3>
 	        <transition name="menuList">
 		        <ul v-show="index===nowIndex">
-		        	    <router-link :key="item.path" :to="{path:item.path}" tag="li" class="sidemenu-list" v-for="item in menu.list" @click.native="goPath(item.name)">{{item.name}}</router-link>
+		        	    <router-link :key="item.path" :to="{path:item.path}" tag="li" class="sidemenu-list" v-for="item in menu.list" @click.native="goPath(item.name)">{{item.name}}
+		        	    </router-link>
 		        </ul>
 	        </transition>
 	      </div>
@@ -17,7 +18,13 @@
 export default {
 	methods:{
 		chooseMeunBtn(index){
-			this.nowIndex=index
+			if(this.stateLaog){
+			   this.nowIndex=''
+			   this.stateLaog=false
+			}else{
+				this.nowIndex=index
+				this.stateLaog=true
+			}
 		},
 		goPathTo(state,tabCont,pathlink){
 			if(!state){
@@ -32,6 +39,7 @@ export default {
 	data () {
 	    return {
 	    	nowIndex:0,
+	    	stateLaog:false,
 	    	menuList:[
 	    		{
 	    			title:"后台首页",
@@ -130,7 +138,7 @@ export default {
 	    			]
 	    		},
 	    		{
-	    			title:"欢迎, jay",
+	    			title:"欢迎, 960178541@qq.com",
 	    			list:[
     					{
 	              name: '修改密码',
@@ -167,11 +175,13 @@ export default {
 	.sidemenu-title{
 		height:80px;
 		padding-left:50px;
+		font-size: 30px;
 	}
 	.sidemenu-list{
 		height:80px;
 		background: #23262E;
 		padding-left: 90px;
+		font-size: 30px;
 	}
 	.chooMenuList{
 		background: #009688;

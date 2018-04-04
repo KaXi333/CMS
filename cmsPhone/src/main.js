@@ -72,7 +72,7 @@ let router = new VueRouter({
 		{
 			path:'/adminListPage',
 			component:adminListPage
-		},
+		}
 	]
 })
 Vue.config.productionTip = false

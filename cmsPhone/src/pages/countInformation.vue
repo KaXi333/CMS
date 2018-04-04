@@ -111,6 +111,4 @@ export default {
 	{
 	 border-bottom: none;
 	}
-	.contInform-value{
-	}
 </style>

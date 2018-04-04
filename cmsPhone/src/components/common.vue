@@ -1,64 +1,15 @@
 <template>
-  <div>
-    <login-Page v-if="isShowLogin" @on-change="login"></login-Page>
-    <div v-if="isShowLayout">
-      <div class="head-title">管理系统</div>
-        <div class="bodyConent" :class="[ifAddClassLeft?'addClassLeft':'delClassLeft']">
-          <div class="menu-box">
-            <h2 class="menu-title">{{tabCont}}</h2>
-            <p class="menu-button" @click="hasMenuBtn">菜单<i class="iconfont icon-caidan"></i></p>
-          </div>
-          <div class="app-content">
-            <keep-alive>
-              <router-view></router-view>
-            </keep-alive>
-          </div>
-        </div>
-      <div class="app-foot">©CopyRight 2016-2018 Version: 1.2.0</div>
-      <my-menu v-show="isShowMenuList" @on-goPath="goPathShow"></my-menu>
-    </div>
-  </div>
+  
 </template>
 
 <script>
-import loginPage from './login'
 import menu from './menu'
 export default {
   components:{
-    myMenu:menu,
-    loginPage
-  },
-  methods:{
-    //登录
-    login(){
-      this.isShowLayout=true
-      this.isShowLogin=false
-    },
-    //菜单点击事件
-    hasMenuBtn(){
-      this.isShowMenuList=!this.isShowMenuList
-      this.ifAddClassLeft=!this.ifAddClassLeft
-    },
-    //页面跳转
-    goPathShow(tab){
-      this.isShowMenuList=!this.isShowMenuList
-      this.ifAddClassLeft=!this.ifAddClassLeft
-      if(tab==="退出"){
-        this.isShowLayout=false
-        this.isShowLogin=true
-      }else{
-        this.tabCont=tab
-      }
-      
-    }
+    myMenu:menu
   },
   data () {
     return {
-      isShowLayout:false,
-      isShowLogin:true,
-      isShowMenuList:false,
-      ifAddClassLeft:false,
-      tabCont:"后台首页"
     }
   }
 }
