@@ -1,25 +1,25 @@
 <template>
 	<div class="changePass-continer">
 		<div class="changePass-border">
-			<div class="changePass-box">
-				<h3 class="changePass-name">名称</h3>
+			<div class="input-box">
+				<h3 class="input-name">名称</h3>
 				<div class="input-value"><input v-model="userModel" type="text" placeholder="请输入名称"></div>
 			</div>
-			<div class="changePass-box">
-				<h3 class="changePass-name">邮箱</h3>
-				<div class="input-value"><input v-model="usernameModel" type="password" placeholder="请输入邮箱"></div>
+			<div class="input-box">
+				<h3 class="input-name">邮箱</h3>
+				<div class="input-value"><input v-model="usernameModel" type="email" placeholder="请输入邮箱"></div>
 			</div>
-			<div class="changePass-box">
-				<h3 class="changePass-name">密码</h3>
+			<div class="input-box">
+				<h3 class="input-name">密码</h3>
 				<div class="input-value"><input v-model="userpasswordModel" type="password" placeholder="请输入密码"></div>
 			</div>
-			<div class="changePass-box">
-				<h3 class="changePass-name">确认密码</h3>
+			<div class="input-box">
+				<h3 class="input-name">确认密码</h3>
 				<div class="input-value"><input v-model="conuserpasswordModel" type="password" placeholder="请输入确认密码"></div>
 			</div>
-			<div class="changePass-btn changePass-box">
-				<button class="changePass-tab changePass-tab-bc" @click="addAdmin">立即提交</button>
-			<button class="changePass-tab">重置</button>
+			<div class="commit-btn commit-box">
+				<button class="button-tab button-tab-bc" @click="addAdmin">立即提交</button>
+			<button class="button-tab">重置</button>
 			</div>
 		</div>
 	</div>
@@ -33,9 +33,6 @@ export default {
 		} 
 	},
 	methods:{
-		addAdmin(){
-			
-		}
 	}
 }
 </script>
@@ -44,32 +41,6 @@ export default {
 	.changePass-border{
 		padding:0 30px;
 		padding-top: 60px;
-	}
-	.changePass-box{
-		margin-bottom: 65px;
-	}
-	.changePass-name{
-		width: 170px;
-		float: left;
-		height: 60px;
-		line-height: 60px;
-		font-size: 30px;
-		margin-right: 40px;
-		text-align: right;
-	}
-	.changePass-btn{
-		padding-left: 210px;
-		padding-top: 30px;
-	}
-	.changePass-box:after{
-		display: block;
-		visibility: hidden;
-		clear: both;
-		height:0;
-		content: ".";
-	}
-	.changePass-box{
-		zoom:1;
 	}
 
 </style>

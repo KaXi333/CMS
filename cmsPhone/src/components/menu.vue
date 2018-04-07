@@ -1,7 +1,7 @@
 <template>
 	<transition name="menu">
 	   <div class="sidemenu-box" >
-		   <div @click="chooseMeunBtn(index)"  v-for="(menu,index) in menuList">
+		   <div @click="chooseMeunBtn(index,menu.list!='')"  v-for="(menu,index) in menuList">
 	        <h3 @click="goPathTo(menu.list!='',menu.title,menu.path)" class="sidemenu-title" :class="{chooMenuList:index===nowIndex}">{{menu.title}}<i v-if="menu.list!=''" class="iconfont" :class="[index===nowIndex?'icon-xiaosanjiaoup':'icon-sanjiao']"></i></h3>
 	        <transition name="menuList">
 		        <ul v-show="index===nowIndex">
@@ -17,14 +17,17 @@
 <script>
 export default {
 	methods:{
-		chooseMeunBtn(index){
-			if(this.stateLaog){
-			   this.nowIndex=''
-			   this.stateLaog=false
-			}else{
-				this.nowIndex=index
-				this.stateLaog=true
+		chooseMeunBtn(index,state){
+			if(state){
+				if(this.stateLaog){
+				   this.nowIndex=''
+				   this.stateLaog=false
+				}else{
+					this.nowIndex=index
+					this.stateLaog=true
+				}
 			}
+			
 		},
 		goPathTo(state,tabCont,pathlink){
 			if(!state){
@@ -145,7 +148,8 @@ export default {
 	              path:"changePwPage"
 	            },
 	            {
-	              name: '退出'
+	              name: '退出',
+	              path:"login"
 	            }
 	    			]
 	    		}

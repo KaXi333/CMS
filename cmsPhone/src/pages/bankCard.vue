@@ -1,71 +1,128 @@
 <template>
-	<div class="changePass-continer">
-		<div class="changePass-border">
-			<div class="changePass-box">
-				<h3 class="changePass-name">账户名</h3>
+	<div class="bankCard-continer">
+		<div class="bankCard-input-border">
+			<div class="input-box">
+				<h3 class="input-name">账户名</h3>
 				<div class="input-value"><input type="text" placeholder="输入银行账户名"></div>
 			</div>
-			<div class="changePass-box">
-				<h3 class="changePass-name">银行账户</h3>
+			<div class="input-box">
+				<h3 class="input-name">银行账户</h3>
 				<div class="input-value"><input type="text" placeholder="输入银行账户"></div>
 			</div>
-			<div class="changePass-box">
-				<h3 class="changePass-name">开户行</h3>
-					<v-selection :selections="chooseTypes"></v-selection>
+			<div class="input-box">
+				  <h3 class="input-name">开户行</h3>
+					<div class="input-value" @click="handleClick"><input v-model="value" type="text" placeholder="请选择开户行"><i class="iconfont icon-qianjin"></i></div>
+					<mt-popup v-model="popupVisible" position="bottom" popup-transition="popup-fade">
+						<div class="picker-toolbar">  
+	            <span class="mint-select-cancel" @click="mintCancelBtn">取消</span>  
+	            <span class="mint-select-confirm" @click="mintConfirmBtn">确定</span>  
+	          </div>  
+						<mt-picker :slots="slots" @change="onValuesChange"></mt-picker>
+					</mt-popup>
 			</div>
-			<div class="changePass-box">
-				<h3 class="changePass-name">开户所在地</h3>
-				<v-selection :selections="chooseLocal"></v-selection>
-				<v-selection :selections="chooseCity"></v-selection>
+			<div class="input-box">
+				<h3 class="input-name">开户所在地</h3>
+				<!-- <v-selection :selections="chooseLocal"></v-selection>
+				<v-selection :selections="chooseCity"></v-selection> -->
+				<div class="input-value" @click="handleCityClick()"><input v-model="cityvalue" type="text" placeholder="请选择省市">
+					<i class="iconfont icon-qianjin"></i>
+				</div>
+				<mt-popup v-model="popupCityVisible" position="bottom" popup-transition="popup-fade">
+						<div class="picker-toolbar">  
+	            <span class="mint-select-cancel" @click="mintCityCancelBtn">取消</span>  
+	            <span class="mint-select-confirm" @click="mintCityConfirmBtn">确定</span>  
+	          </div>  
+						<mt-picker :slots="slotsCity" @change="onValuesCityChange"></mt-picker>
+					</mt-popup>
 			</div>
-			<div class="changePass-box">
-				<h3 class="changePass-name">开户网点</h3>
+			<div class="input-box">
+				<h3 class="input-name">开户网点</h3>
 				<div class="input-value">
 					<input type="text" placeholder="选择开户网点">
 				</div>
 			</div>
-			<div class="changePass-box">
-				<h3 class="changePass-name">备注</h3>
+			<div class="input-box">
+				<h3 class="input-name">备注</h3>
 				<div class="input-value"><input type="text" placeholder="输入备注，比如：结算银行卡"></div>
 			</div>
-			<div class="changePass-btn changePass-box">
-				<button class="changePass-tab changePass-tab-bc">立即提交</button>
-			<button class="changePass-tab">重置</button>
+			<div class="commit-btn commit-box">
+				<button class="button-tab button-tab-bc">立即提交</button>
+			<button class="button-tab">重置</button>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import Vue from 'vue'
+import { Picker,Popup } from 'mint-ui';
+Vue.component(Picker.name, Picker);
+Vue.component(Popup.name, Popup);
 import VSelection from '../components/base/selection'
 export default {
 	components:{
 		VSelection
 	},
+	methods:{
+		onValuesChange(picker, values) { 
+				this.value = values[0]
+	      console.log(picker) 
+	      console.log(values) 
+	  },
+	  handleClick(){
+	  	this.popupVisible = true
+	  },
+	  mintCancelBtn(){
+	  	this.popupVisible = false
+	  },
+	  mintConfirmBtn(){
+	  	this.popupVisible = false
+	  },
+	  onValuesCityChange(picker, values) { 
+				this.cityvalue = values[0]+' - '+values[1]
+	      console.log(picker) 
+	      console.log(values) 
+	  },
+	  handleCityClick(){
+	  	this.popupCityVisible=true
+	  },
+	  mintCityCancelBtn(){
+	  	this.popupCityVisible=false
+	  },
+	  mintCityConfirmBtn(){
+	  	this.popupCityVisible=false
+	  }
+	},
 	data () {
 	    return {
-	    	chooseTypes:[
+	    	popupVisible:false,
+	    	popupCityVisible:false,
+	    	value:"",
+	    	cityvalue:"",
+	    	slots:[
 	    		{
-		          label: '选择开户行',
-		          value: 0
-		        },
-		        {
-		          label: '中国工商银行',
-		          value: 1
-		        },
-		        {
-		          label: '中国农业银行',
-		          value: 2
-		        },
-		        {
-		          label: '中国银行',
-		          value: 3
-		        },
-		        {
-		          label: '中国建设银行',
-		          value: 4
-		        }
-	    	],
+	    			flex: 1,
+	    			values: ['中国工商银行', '中国农业银行', '中国银行', '中国建设银行'],
+	    			textAlign:"center"
+	    		}
+	    	] ,
+	    	slotsCity:[
+	    		{ 
+	         flex: 1, 
+	         values: ['北京市', '上海市', '广东省', '湖南省', '江苏省'], 
+	         className: 'slotsCity1', 
+	         textAlign: 'center' 
+	        }, { 
+	         divider: true, 
+	         content: '-', 
+	         className: 'slotsCity2' 
+	        }, { 
+	         flex: 1, 
+	         values: ['深圳市', '广州市', '佛山市', '东莞市', '中山市', '韶关市'], 
+	         className: 'slotsCity3', 
+	         textAlign: 'center' 
+	        } 
+	    	], 
 	    	chooseLocal:[
 	    		{
 		          label: '选择省份',
@@ -129,34 +186,53 @@ export default {
 
 <style scoped>
 	
-	.changePass-border{
+	.bankCard-input-border{
 		padding:0 30px;
-		padding-top: 60px;
+		padding-top: 30px;
 	}
-	.changePass-box{
-		margin-bottom: 65px;
+	.input-box{
+		border-top: 1px solid #E0E0E0;
+		padding: 5px 0;
+		height:100px;
 	}
-	.changePass-name{
+	.input-name{
 		width: 170px;
 		float: left;
-		height: 60px;
-		line-height: 60px;
+		line-height: 100px;
 		font-size: 30px;
-		margin-right: 40px;
-		text-align: right;
+		margin-right: 30px;
 	}
-	.changePass-btn{
-		padding-left: 210px;
+	.input-value{
+		height: 100px; 
+		width: 480px;
 	}
-	.changePass-box:after{
-		display: block;
-		visibility: hidden;
-		clear: both;
-		height:0;
-		content: ".";
+	.input-value input {
+	    height: 100px; 
+	    line-height: 100px; 
 	}
-	.changePass-box{
-		zoom:1;
+	
+	
+	.mint-popup-bottom {
+		width: 100%;
+	}
+	.picker-toolbar{
+		height:70px;
+		line-height: 70px;
+		padding: 0 30px;
+		font-size: 30px;
+	}
+	.mint-select-cancel{
+		float: left;
+	}
+	.mint-select-confirm{
+		float:right;
+	}
+	.icon-qianjin{
+		float: right;
+		line-height: 100px;
+		font-size: 40px;
+		color: #BEBEBE;
+		height:100%;
 	}
 
 </style>

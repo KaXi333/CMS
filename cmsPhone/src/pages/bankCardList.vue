@@ -1,8 +1,8 @@
 <template>
 	<div class="bankCardList-continer">
 		<div class="bankCardCheck-box">
-			<div class="input-value"><input type="text" placeholder="请输入账户名"></div>
-			<div class="input-value"><input type="text" placeholder="请输入户名"></div>
+			<div class="card-input-value"><input type="text" placeholder="请输入账户名"></div>
+			<div class="card-input-value"><input type="text" placeholder="请输入户名"></div>
 			<button class="checkBtn" type="">查询</button>
 		</div>
 		<div class="list-box">
@@ -76,13 +76,23 @@ export default {
 </script>
 
 <style scoped>
-	.input-value{
+	.card-input-value{
 		margin-right: 25px;
 		background: #fff;
+		float:left;
+	    height: 60px;
+	    line-height: 60px;
+	    font-size: 26px;
 	}
-	.input-value input{
+	.card-input-value input{
 	    width: 230px;
 	    font-size: 24px;
+	    height: 60px;
+	    padding-left: 16px;
+	    outline: none;
+	    border: none;
+	    background: #fff;
+	    line-height: 60px;
 	  }
 	.bankCardList-continer{
 		padding:20px 15px;
@@ -96,9 +106,9 @@ export default {
 		height:50px;
 		line-height: 50px;
 		border: none;
-    color:#fff;
-    font-size: 26px;
-    line-height: 50px;
+	    color:#fff;
+	    font-size: 26px;
+	    line-height: 50px;
 	}
 	.editBtn{
 		margin-right: 15px;

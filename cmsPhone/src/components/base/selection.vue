@@ -32,6 +32,7 @@ export default {
 	methods:{
 		toggleDrop(){
 			this.isDrop=!this.isDrop
+			this.popupVisible = true
 		},
 		chooseSelection(index){
 			this.nowIndex=index

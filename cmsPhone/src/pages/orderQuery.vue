@@ -1,10 +1,10 @@
 <template>
 	<div class="oderQuery-continer">
 		<div class="oderQuery-box">
-			<div class="input-value"><input type="text" placeholder="请输入交易号"></div>
-			<div class="input-value"><input type="text" placeholder="请输入商户交易号"></div>
-			<div class="input-value"><input type="text" placeholder="请输入商户名称"></div>
-			<div class="input-value"><input type="text" placeholder="请输入日期"></div>
+			<div class="check-input-value"><input type="text" placeholder="请输入交易号"></div>
+			<div class="check-input-value"><input type="text" placeholder="请输入商户交易号"></div>
+			<div class="check-input-value"><input type="text" placeholder="请输入商户名称"></div>
+			<div class="check-input-value"><input type="text" placeholder="请输入日期"></div>
 			<v-selection :selections="payTypes"></v-selection>
 			<v-selection :selections="stateTypes"></v-selection>
 			<button class="checkBtn" type="">查询</button>
@@ -188,16 +188,16 @@ export default {
 	}
 	.oderQuery-box:after{
 		display: block;
-    visibility: hidden;
-    clear: both;
-    height:0;
-    content: ".";
+	    visibility: hidden;
+	    clear: both;
+	    height:0;
+	    content: ".";
 	}
-	.input-value{
+	.check-input-value{
 		margin-right: 30px;
 		margin-bottom: 30px;
 	}
-	.input-value input{
+	.check-input-value input{
 		width: 280px;
 	}
 	.checkBtn{

@@ -1,7 +1,7 @@
 <template>
 	<div class="bankCardList-continer">
 		<div class="bankCardCheck-box">
-			<div class="input-value"><input type="text" placeholder="请输入名称"></div>
+			<div class="check-input-value"><input type="text" placeholder="请输入名称"></div>
 			<v-selection :selections="Types"></v-selection>
 			<button class="checkBtn" type="">查询</button>
 		</div>
@@ -91,11 +91,11 @@ export default {
 </script>
 
 <style scoped>
-	.input-value{
+	.check-value{
 		margin-right: 25px;
 		background: #fff;
 	}
-	.input-value input{
+	.check-value input{
 	    width: 230px;
 	    font-size: 24px;
 	  }

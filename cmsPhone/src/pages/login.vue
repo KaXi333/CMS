@@ -1,18 +1,23 @@
 <template>
-	<div class="changePass-continer">
-		<div class="changePass-border">
+	<div class="login-continer">
+		<div class="login-bc"></div>
+		<div class="login-border">
 			<div class="changePass-box">
-				<h3 class="changePass-name">用户名</h3>
-				<div class="input-value"><input v-model="usernameModel" type="email" placeholder="邮箱"></div>
+				<div class="login-input-value">
+					<i class="iconfont icon-dengluyemianyonghuming"></i>
+					<input v-model="usernameModel" type="email" placeholder="邮箱">
+				</div>
 				<span class="g-form-error">{{userNameerrorText}}</span>
 			</div>
 			<div class="changePass-box">
-				<h3 class="changePass-name">密码</h3>
-				<div class="input-value"><input v-model="passwordModel" type="password" placeholder="密码"></div>
+				<div class="login-input-value">
+				<i class="iconfont icon-mima"></i>
+				<input v-model="passwordModel" type="password" placeholder="密码">
+				</div>
 				<span class="g-form-error">{{passworderrorText}}</span>
 			</div>
-			<div class="changePass-btn changePass-box">
-				<button class="changePass-tab changePass-tab-bc" @click="loginFn">登录</button>
+			<div class="login-box">
+				<button class="login-btn changePass-tab-bc" @click="loginFn">登录</button>
 			</div>
 		</div>
 	</div>
@@ -36,15 +41,17 @@ export default {
 	},
 	methods:{
 		loginFn(){
+			//console.log(localStorage.getItem('userName'))
 			if(this.usernameModel!=this.userInformation[0].userName){
-				alert(0)
 				this.passworderrorText=''
 				this.userNameerrorText='电子邮箱不正确'
 			}else if(this.passwordModel!=this.userInformation[0].password){
 				this.userNameerrorText=''
 				this.passworderrorText='密码错误'
 			}else{
-				this.$emit('on-change')
+				//localStorage.setItem('userName',this.usernameModel)
+				//localStorage.setItem('password',this.passwordModel)
+				this.$router.push({path:"indexPage"})
 			}
 		}
 	}
@@ -52,30 +59,55 @@ export default {
 </script>
 
 <style scoped>
+	.login-continer{
+		
+	}
+	.login-bc{
+		background: rgb(50,53,66);
+		width: 100%;
+		height:100%;
+		position: fixed;
+		z-index: -10;
+	}
   .g-form-error{
-  	line-height: 65px;
+  	line-height: 60px;
   	color:#FF0000;
   	font-size: 20px;
   	margin-left: 10px;
-  }
-	.input-value{
-		border: 1px solid #009688;
-		padding: 5px;
-	}
-	.input-value input{
-		width: 350px;
-		border: none;
+  	width: 500px;
+		margin: auto;
 		display: block;
+		height:60px;
+  }
+  .icon-dengluyemianyonghuming,.icon-mima{
+  	font-size: 30px;
+  	margin-left: 10px;
+  }
+	.login-input-value{
+		border-radius: 10px;
+		padding: 5px;
+		float: none;
+		width: 500px;
+		margin: auto;
+		background: #fff;
+		height:70px;
+	}
+	.login-input-value input{
+		border: none;
+		height:70px;
+    padding-left: 16px;
+    width: 400px;
+    outline: none;
+    background: #fff;
+    line-height: 60px;
+    font-size: 26px;
 	}
 	.changePass-tab{
 		width: 376px;
 	}
-	.changePass-border{
+	.login-border{
 		padding:0 20px;
-		padding-top: 150px;
-	}
-	.changePass-box{
-		margin-bottom: 65px;
+		padding-top: 380px;
 	}
 	.changePass-name{
 		padding: 5px 0;
@@ -87,19 +119,16 @@ export default {
 		margin-right: 40px;
 		text-align: right;
 	}
-	.changePass-btn{
-		padding-left: 140px;
-		padding-top: 30px;
+	.login-box{
+		width: 500px;
+		margin:auto;
 	}
-	.changePass-box:after{
-		display: block;
-		visibility: hidden;
-		clear: both;
-		height:0;
-		content: ".";
-	}
-	.changePass-box{
-		zoom:1;
+	.login-btn{
+		width: 100%;
+		font-size: 30px;
+		height:80px;
+		border-radius: 10px;
+		border: none;
 	}
 	
 </style>
