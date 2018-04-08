@@ -74,28 +74,28 @@ li{list-style: none;}
   .input-box{
 		border-top: 1px solid #E0E0E0;
 		padding: 5px 0;
-		height:100px;
+		height:90px;
 	}
 	.input-name{
 		width: 170px;
 		float: left;
-		line-height: 100px;
+		line-height: 90px;
 		font-size: 30px;
 		margin-right: 30px;
 	}
 	.input-value{
 		float:left;
-		height: 100px; 
+		height: 90px; 
 		width: 480px;
-		line-height: 100px;
+		line-height: 90px;
     	font-size: 28px;
 	}
 	.input-value input {
-	    height: 100px; 
-	    line-height: 100px;
+      width:430px; 
+	    height: 90px; 
+	    line-height: 90px;
 	    outline: none;
 	    border: none;
-	    background: #fff; 
 	}
 	/*提交重置button样式*/
 	.commit-btn{
@@ -132,6 +132,37 @@ li{list-style: none;}
 	    background: #fff;
 	    line-height: 60px;
 	}
+  /*mint-ui picker、popup样式*/
+  .mint-popup-bottom {
+    width: 100%;
+  }
+  .picker-toolbar{
+    height:70px;
+    line-height: 70px;
+    font-size: 30px;
+    color:#26a2ff;
+    border-bottom: 1px solid #d0d0d0
+  }
+  .mint-select-cancel,.mint-select-confirm{
+    float: left;
+    text-align: center;
+    display: inline-block;
+    width: 50%;
+  }
+  .mint-select-confirm{
+    float:right;
+  }
+  .mint-datetime-cancel,.mint-datetime-confirm{
+    line-height: 70px;
+    font-size: 30px;
+  }
+  .icon-qianjin{
+    float: right;
+    line-height: 100px;
+    font-size: 40px;
+    color: #BEBEBE;
+    height:100%;
+  }
 /*  .input-value{
     float:left;
     height: 60px;

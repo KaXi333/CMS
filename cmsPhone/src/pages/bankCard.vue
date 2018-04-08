@@ -55,9 +55,10 @@
 
 <script>
 import Vue from 'vue'
-import { Picker,Popup } from 'mint-ui';
+import { Picker,Popup,DatetimePicker } from 'mint-ui';
 Vue.component(Picker.name, Picker);
 Vue.component(Popup.name, Popup);
+Vue.component(DatetimePicker.name, DatetimePicker)
 import VSelection from '../components/base/selection'
 export default {
 	components:{
@@ -65,7 +66,7 @@ export default {
 	},
 	methods:{
 		onValuesChange(picker, values) { 
-				this.value = values[0]
+		  this.value = values[0]
 	      console.log(picker) 
 	      console.log(values) 
 	  },
@@ -188,51 +189,6 @@ export default {
 	
 	.bankCard-input-border{
 		padding:0 30px;
-		padding-top: 30px;
-	}
-	.input-box{
-		border-top: 1px solid #E0E0E0;
-		padding: 5px 0;
-		height:100px;
-	}
-	.input-name{
-		width: 170px;
-		float: left;
-		line-height: 100px;
-		font-size: 30px;
-		margin-right: 30px;
-	}
-	.input-value{
-		height: 100px; 
-		width: 480px;
-	}
-	.input-value input {
-	    height: 100px; 
-	    line-height: 100px; 
-	}
-	
-	
-	.mint-popup-bottom {
-		width: 100%;
-	}
-	.picker-toolbar{
-		height:70px;
-		line-height: 70px;
-		padding: 0 30px;
-		font-size: 30px;
-	}
-	.mint-select-cancel{
-		float: left;
-	}
-	.mint-select-confirm{
-		float:right;
-	}
-	.icon-qianjin{
-		float: right;
-		line-height: 100px;
-		font-size: 40px;
-		color: #BEBEBE;
-		height:100%;
 	}
 
 </style>

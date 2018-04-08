@@ -125,7 +125,8 @@ export default {
 	    			title:"结算管理",
 	    			list:[
 		    			{
-			              name: '申请结算'
+			              name: '申请结算',
+			              path:"applyClearPage"
 			            },
 			            {
 			              name: '批量申请'
