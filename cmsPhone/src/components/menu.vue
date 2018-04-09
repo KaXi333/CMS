@@ -132,7 +132,8 @@ export default {
 			              name: '批量申请'
 			            },
 			            {
-			              name: '结算查询'
+			              name: '结算查询',
+			              path:'settleQueryPage'
 			            }
 	    			]
 	    		},

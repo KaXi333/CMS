@@ -20,6 +20,7 @@ import orderQuerySumPage from './pages/orderQuerySum'
 import addAdminPage from './pages/addAdmin'
 import adminListPage from './pages/adminList'
 import applyClearPage from './pages/applyClear'
+import settleQueryPage from './pages/settleQuery'
 
 Vue.use(VueRouter)
 let router = new VueRouter({
@@ -89,6 +90,10 @@ let router = new VueRouter({
 				{
 					path:'/applyClearPage',
 					component:applyClearPage
+				},
+				{
+					path:'/settleQueryPage',
+					component:settleQueryPage
 				}
 			]
 		}

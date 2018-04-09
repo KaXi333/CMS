@@ -15,15 +15,8 @@
 			  </mt-datetime-picker>
 			</div>
 			<div class="input-box">
-				  <h2 class="input-name">支付方式</h2>
-					<div class="input-value" @click="handlePayClick"><input v-model="Payvalue" type="text" placeholder="请选择支付方式"><i class="iconfont icon-qianjin"></i></div>
-					<mt-popup v-model="popupPayVisible" position="bottom" popup-transition="popup-fade">
-						<div class="picker-toolbar">  
-	            <span class="mint-select-cancel" @click="mintPayCancelBtn">取消</span>  
-	            <span class="mint-select-confirm" @click="mintPayConfirmBtn">确定</span>  
-	          </div>  
-						<mt-picker :slots="Payslots" @change="onValuesPayChange"></mt-picker>
-					</mt-popup>
+				<h2 class="input-name">支付方式</h2>
+				<picker :slots="Payslots"></picker>	
 			</div>
 			<div class="checkBtn-box">
 				<button class="checkBtn longCheckBtn" type="">查询</button>
@@ -49,11 +42,10 @@
 </template>
 
 <script>
-import VSelection from '../components/base/selection'
-import {formatDate} from '../../static/js/util.js'
+import picker from '../components/base/picker'
 export default {
 	components:{
-		VSelection
+		picker
 	},
 	methods:{
 		checkedAll(){
@@ -63,21 +55,6 @@ export default {
 				this.checkboxModel=true;
 			}
 		},
-		//支付方法select框
-		onValuesPayChange(picker, values) { 
-				this.Payvalue = values[0]
-	      console.log(picker) 
-	      console.log(values) 
-	  },
-	  handlePayClick(){
-	  	this.popupPayVisible=true
-	  },
-	  mintPayCancelBtn(){
-	  	this.popupPayVisible=false
-	  },
-	  mintPayConfirmBtn(){
-	  	this.popupPayVisible=false
-	  },
 	  //日期选择
 	  openDatePicker() {
         this.$refs.pickerStart.open();
@@ -97,8 +74,6 @@ export default {
 	},
 	data () {
 	    return {
-	    	Payvalue:"",//支付方式选择值
-	    	popupPayVisible:false,//控制支付方式select显示隐藏
 	    	pickerDateVisible:null,//开始日期值
 	    	dateStartValue:this.formatDate(new Date()),//设置默认日期
 	    	Payslots:[

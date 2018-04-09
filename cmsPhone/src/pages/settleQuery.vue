@@ -19,12 +19,12 @@
 				<datepicker></datepicker>
 			</div>
 			<div class="input-box">
-				  <h2 class="input-name">支付方式</h2>
-					<picker :slots="Payslots"></picker>
+				  <h2 class="input-name">审核状态</h2>
+					<picker :slots="examinelots"></picker>
 			</div>
 			<div class="input-box">
-				  <h2 class="input-name">支付状态</h2>
-					<picker :slots="PayStateslots"></picker>
+				  <h2 class="input-name">交易状态</h2>
+					<picker :slots="tradeStateslots"></picker>
 			</div>
 			<div class="checkBtn-box">
 				<button @click="orderCheckListBtn" class="checkBtn longCheckBtn" type="">查询</button>
@@ -40,11 +40,13 @@
 			<div class="list-box">
 				<div class="list-content">
 					<div class="list-title-box">
+					  <h3 class="list-title"><input type="checkbox" class="input-checkbox"></h3>
 						<h3 class="list-title" v-for="(item,index) in bankTitles">{{item}}</h3>
 					</div>
 					<div class="list-value-box">
 						<div class="list-value" v-for="(item,index) in bankCardLists">
 							<ul class="clearFloat">
+							  <li class="list-item"><input v-model='checkboxModel' type="checkbox" class="input-checkbox"></li>
 								<li class="list-item">{{item.name}}</li>
 								<li class="list-item">{{item.state}}</li>
 								<li class="list-item">{{item.rate}}</li>
@@ -53,7 +55,8 @@
 								<li class="list-item">{{item.md5Key}}</li>
 								<li class="list-item">{{item.signTime}}</li>
 								<li class="list-item">{{item.expireTime}}</li>
-								<li class="list-item">{{item.payTime}}</li></li>
+								<li class="list-item">{{item.payTime}}</li>
+								<li class="list-item"><button class="detailBtn">详情</button></li>
 							</ul>
 						</div>
 					</div>
@@ -85,17 +88,19 @@ export default {
 	data () {
 	    return {
 	    	orderListShowContral:false,//控制订单查询页列表的显示隐藏
-	    	Payslots:[
+	    	//审核状态参数
+	    	examinelots:[
 	    		{
 	    			flex: 1,
-	    			values: ['微信H5支付', '网银支付', 'QQ扫码支付', 'QQH5支付','支付宝H5','微信扫码支付'],
+	    			values: ['待审核', '审核通过', '审核未通过'],
 	    			textAlign:"center"
 	    		}
 	    	] ,
-	    	PayStateslots:[
+	    	//交易状态参数
+	    	tradeStateslots:[
 	    		{
 	    			flex: 1,
-	    			values: ['未支付', '已支付', '退款中', '已退款'],
+	    			values: ['进行中', '成功', '失败'],
 	    			textAlign:"center"
 	    		}
 	    	] ,
@@ -174,15 +179,16 @@ export default {
 	        }
 	    	],
 	    	bankTitles:[
-	    		"创建时间",
-	    		"商户名称",
-	    		"平台订单号",
-	    		"商户订单号",
-	    		"交易金额",
+	    		"提交时间",
+	    		"交易号",
+	    		"银行账户名",
+	    		"银行账户",
+	    		"结算类型",
 	    		"手续费",
-	    		"类型",
-	    		"状态",
-	    		"付款时间"
+	    		"金额",
+	    		"手续费",
+	    		"审核状态",
+	    		"交易商户号"
 	    	]
 		} 
 	}
@@ -253,40 +259,53 @@ export default {
 		margin: 30px 0;
 	}
 	.list-content{
-		width: 2490px;
+		width: 2771px;
 		margin-top: 0;
 	}
+	.detailBtn{
+		width: 80px;
+		height:50px;
+		line-height: 50px;
+		border: none;
+		font-size: 20px;
+		color:#fff;
+		background: #009688;
+	}
 	li:nth-child(1){
-		width: 300px;
+		width: 80px;
 	}
 	li:nth-child(2){
-		width: 200px;
+		width: 300px;
 	}
 	li:nth-child(3){
-		width: 350px;
-	}
-	li:nth-child(4){
-		width: 530px;
-	}
-	li:nth-child(9){
-		width: 300px;
-		border-right:none;
-	}
-	h3:nth-child(1){
-		width: 300px;
-	}
-	h3:nth-child(2){
 		width: 200px;
 	}
-	h3:nth-child(3){
+	li:nth-child(4){
 		width: 350px;
 	}
-	h3:nth-child(4){
+	li:nth-child(5){
 		width: 530px;
 	}
-	h3:nth-child(9){
+	li:nth-child(10){
 		width: 300px;
-		border-right:none;
+	}
+	h3:nth-child(1){
+		width: 80px;
+	}
+	h3:nth-child(2){
+		width: 300px;
+	}
+	h3:nth-child(3){
+		width: 200px;
+	}
+	h3:nth-child(4){
+		width: 350px;
+	}
+	h3:nth-child(5){
+		width: 530px;
+	}
+	h3:nth-child(10){
+		width: 300px;
 	}
 
 </style>
