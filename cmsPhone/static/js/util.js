@@ -7,6 +7,6 @@ const formatDate=function(date){
    d = d < 10 ? ('0' + d) : d
    return y + ' ' + m + ' ' + d
 }
-export default{
+export{
   formatDate
 }

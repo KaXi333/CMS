@@ -61,10 +61,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { Picker,Popup } from 'mint-ui';
-Vue.component(Picker.name, Picker);
-Vue.component(Popup.name, Popup);
 import VSelection from '../components/base/selection'
 export default {
 	components:{

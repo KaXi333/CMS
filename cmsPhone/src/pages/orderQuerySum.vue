@@ -1,9 +1,33 @@
 <template>
 	<div class="oderQuery-continer">
 		<div class="oderQuery-box">
-			<v-selection :selections="payTypes"></v-selection>
-			<v-selection :selections="stateTypes"></v-selection>
-			<button class="checkBtn" type="">查询</button>
+			<div class="input-box">
+				<h2 class="input-name">日期</h2>
+				<div class="input-value"><input v-model="dateStartValue" @click="openDatePicker" class="date-input" type="text" placeholder="选择起始日期"><i class="iconfont icon-qianjin"></i></div>
+				<mt-datetime-picker
+			    ref="pickerStart"
+			    type="date"
+			    @confirm="handleDateConfirm"
+			    v-model="pickerDateVisible"
+			    year-format="{value} 年"
+				  month-format="{value} 月"
+				  date-format="{value} 日">
+			  </mt-datetime-picker>
+			</div>
+			<div class="input-box">
+				  <h2 class="input-name">支付方式</h2>
+					<div class="input-value" @click="handlePayClick"><input v-model="Payvalue" type="text" placeholder="请选择支付方式"><i class="iconfont icon-qianjin"></i></div>
+					<mt-popup v-model="popupPayVisible" position="bottom" popup-transition="popup-fade">
+						<div class="picker-toolbar">  
+	            <span class="mint-select-cancel" @click="mintPayCancelBtn">取消</span>  
+	            <span class="mint-select-confirm" @click="mintPayConfirmBtn">确定</span>  
+	          </div>  
+						<mt-picker :slots="Payslots" @change="onValuesPayChange"></mt-picker>
+					</mt-popup>
+			</div>
+			<div class="checkBtn-box">
+				<button class="checkBtn longCheckBtn" type="">查询</button>
+			</div>
 		</div>
 		<div class="list-box">
 			<div class="list-content">
@@ -16,11 +40,6 @@
 							<li class="list-item">{{item.name}}</li>
 							<li class="list-item">{{item.state}}</li>
 							<li class="list-item">{{item.rate}}</li>
-							<li class="list-item">{{item.minSum}}</li>
-							<li class="list-item">{{item.maxSum}}</li>
-							<li class="list-item">{{item.md5Key}}</li>
-							<li class="list-item">{{item.signTime}}</li>
-							<li class="list-item">{{item.expireTime}}</li>
 						</ul>
 					</div>
 				</div>
@@ -31,6 +50,7 @@
 
 <script>
 import VSelection from '../components/base/selection'
+import {formatDate} from '../../static/js/util.js'
 export default {
 	components:{
 		VSelection
@@ -42,108 +62,83 @@ export default {
 			}else{
 				this.checkboxModel=true;
 			}
+		},
+		//支付方法select框
+		onValuesPayChange(picker, values) { 
+				this.Payvalue = values[0]
+	      console.log(picker) 
+	      console.log(values) 
+	  },
+	  handlePayClick(){
+	  	this.popupPayVisible=true
+	  },
+	  mintPayCancelBtn(){
+	  	this.popupPayVisible=false
+	  },
+	  mintPayConfirmBtn(){
+	  	this.popupPayVisible=false
+	  },
+	  //日期选择
+	  openDatePicker() {
+        this.$refs.pickerStart.open();
+    },
+	  handleDateConfirm(){
+	  	this.dateStartValue=this.formatDate(this.$refs.pickerStart.value)
+	  	console.log(this.dateStartValue)
+	  },
+	  formatDate(date){
+		   const y = date.getFullYear()
+		   let m = date.getMonth() + 1
+		   m = m < 10 ? '0' + m : m
+		   let d = date.getDate()
+		   d = d < 10 ? ('0' + d) : d
+		   return y + ' ' + m + ' ' + d
 		}
 	},
 	data () {
 	    return {
-	    	payTypes:[
+	    	Payvalue:"",//支付方式选择值
+	    	popupPayVisible:false,//控制支付方式select显示隐藏
+	    	pickerDateVisible:null,//开始日期值
+	    	dateStartValue:this.formatDate(new Date()),//设置默认日期
+	    	Payslots:[
 	    		{
-		          label: '全部方式',
-		          value: 0
-		        },
-		        {
-		          label: '微信H5',
-		          value: 1
-		        },
-		        {
-		          label: '网银支付',
-		          value: 2
-		        },
-	    	],
-	    	stateTypes:[
-	    		{
-		          label: '全部状态',
-		          value: 0
-		        },
-		        {
-		          label: '未支付',
-		          value: 1
-		        },
-		        {
-		          label: '已支付',
-		          value: 2
-		        },
-		        {
-		          label: '退款中',
-		          value: 2
-		        },
-		        {
-		          label: '已退款',
-		          value: 2
-		        },
-	    	],
+	    			flex: 1,
+	    			values: ['微信H5支付', '网银支付', 'QQ扫码支付', 'QQH5支付','支付宝H5','微信扫码支付'],
+	    			textAlign:"center"
+	    		}
+	    	] ,
 	    	bankCardLists:[
     		  {
-	          name: 'T0结算',
-	          state: '正常' ,
-	          rate: '1',
-	          minSum: '0.01',
-	          maxSum: '3000:00' ,
-	          md5Key: '1:00' ,
-	          signTime: '2018-03-17 00:00:00' ,
-	          expireTime: '2019-03-17 00:00:00' 
+	          name: '0.00',
+	          state: '20.00' ,
+	          rate: '59'
 	        },
 	        {
-	          name: 'D0结算',
-	          state: '正常' ,
-	          rate: '2',
-	          minSum: '100:00',
-	          maxSum: '1000:00' ,
-	          md5Key: '0.02' ,
-	          signTime: '2018-03-17 00:00:00' ,
-	          expireTime: '2019-03-17 00:00:00' 
+	          name: '52',
+	          state: '30.2' ,
+	          rate: '2.00' 
 	        },
 	        {
-	          name: 'T1结算',
-	          state: '正常' ,
-	          rate: '1',
-	          minSum: '30:00',
-	          maxSum: '8700:00' ,
-	          md5Key: '0.50' ,
-	          signTime: '2018-03-17 00:00:00' ,
-	          expireTime: '2019-03-17 00:00:00' 
+	          name: '400',
+	          state: '56.00' ,
+	          rate: '67.00'
 	        },
 	        {
-	          name: 'T1结算',
-	          state: '正常' ,
-	          rate: '1',
-	          minSum: '1:00',
-	          maxSum: '4500:00' ,
-	          md5Key: '0.05' ,
-	          signTime: '2018-03-17 00:00:00' ,
-	          expireTime: '2019-03-17 00:00:00' 
+	          name: '59.36',
+	          state: '12.38' ,
+	          rate: '1.00'
 	        },
 	        {
-	          name: 'T0结算',
-	          state: '正常' ,
-	          rate: '2',
-	          minSum: '260:00',
-	          maxSum: '8700:00' ,
-	          md5Key: '0.80' ,
-	          signTime: '2018-03-17 00:00:00' ,
-	          expireTime: '2019-03-17 00:00:00' 
+	          name: '569',
+	          state: '23.36' ,
+	          rate: '20.00' 
 	        }
 	    	],
 	    	bankTitles:[
-	    		"创建时间",
-	    		"商户名称",
-	    		"平台订单号",
-	    		"商户订单号",
-	    		"交易金额",
-	    		"手续费",
-	    		"类型",
-	    		"状态",
-	    		"操作"
+	    		"总金额",
+	    		"总手续费",
+	    		"总净额"
 	    	]
 		} 
 	}
@@ -152,39 +147,18 @@ export default {
 
 <style scoped>
 	.oderQuery-continer{
-		padding:20px 15px;
 	}
 	.oderQuery-box{
-		background: #F0F0F0;
-		padding: 20px 20px;
-		zoom:1;
-	}
-	.oderQuery-box:after{
-		display: block;
-	    visibility: hidden;
-	    clear: both;
-	    height:0;
-	    content: ".";
-	}
-	.input-value{
-		margin-right: 30px;
-		margin-bottom: 30px;
-	}
-	.input-value input{
-		width: 280px;
-	}
-	.checkBtn{
-		margin-right: 10px;
+		padding: 0 30px;
 	}
 	.lotNotice{
 		margin: 30px 0;
 	}
 	.list-content{
-		width: 2099px;
 		margin-top: 50px;
 	}
-	.input-checkbox{
-
+	.list-title, .list-item{
+		width: 248px;
 	}
 	.detailBtn{
 		width: 80px;
@@ -194,36 +168,11 @@ export default {
 		color:#fff;
 		background: #009688;
 	}
-	.list-content{width: 2499px;}
-	li:nth-child(4){
-		width: 250px;
-	}
-	li:nth-child(5){
-		width: 250px;
-	}
-	li:nth-child(6){
-		width: 550px;
-	}
-	li:nth-child(7){
-		width: 300px;
+	h3:last-child{
+		border-right: none;
 	}
 	li:last-child{
-		width: 300px;
-	}
-	h3:nth-child(4){
-		width: 250px;
-	}
-	h3:nth-child(5){
-		width: 250px;
-	}
-	h3:nth-child(6){
-		width: 550px;
-	}
-	h3:nth-child(7){
-		width: 300px;
-	}
-	h3:last-child{
-		width: 300px;
+		border-right: none;
 	}
 
 </style>

@@ -54,11 +54,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { Picker,Popup,DatetimePicker } from 'mint-ui';
-Vue.component(Picker.name, Picker);
-Vue.component(Popup.name, Popup);
-Vue.component(DatetimePicker.name, DatetimePicker)
 import VSelection from '../components/base/selection'
 export default {
 	components:{

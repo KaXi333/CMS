@@ -5,6 +5,12 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { Picker,Popup,DatetimePicker,Checklist } from 'mint-ui';
+Vue.component(Picker.name, Picker);
+Vue.component(Popup.name, Popup);
+Vue.component(DatetimePicker.name, DatetimePicker)
+Vue.component(Checklist.name, Checklist)
 export default {
   data () {
     return {
@@ -19,7 +25,7 @@ export default {
    html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
+del, dfn, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,button,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
@@ -60,6 +66,10 @@ li{list-style: none;}
     background:#009688;
     color:#fff; 
   }
+  .checkBtn-box{
+    border-top: 1px solid #E0E0E0;
+    padding-top: 60px;
+  }
   .checkBtn{
     height:60px;
     border: none;
@@ -68,6 +78,12 @@ li{list-style: none;}
     color:#fff;
     font-size: 28px;
     line-height: 60px;
+    border-radius: 5px;
+  }
+  .longCheckBtn{
+    width: 100%;
+    height:70px;
+    font-size: 34px;
   }
 
   /*表单input样式*/
@@ -190,7 +206,7 @@ li{list-style: none;}
   .list-content{
     border:1px solid #E0E0E0;
     margin-top: 50px;
-    width: 1407px;
+    /*width: 1407px;*/
     
   }
   .list-title-box{
