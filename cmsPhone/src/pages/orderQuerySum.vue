@@ -3,16 +3,7 @@
 		<div class="oderQuery-box">
 			<div class="input-box">
 				<h2 class="input-name">日期</h2>
-				<div class="input-value"><input v-model="dateStartValue" @click="openDatePicker" class="date-input" type="text" placeholder="选择起始日期"><i class="iconfont icon-qianjin"></i></div>
-				<mt-datetime-picker
-			    ref="pickerStart"
-			    type="date"
-			    @confirm="handleDateConfirm"
-			    v-model="pickerDateVisible"
-			    year-format="{value} 年"
-				  month-format="{value} 月"
-				  date-format="{value} 日">
-			  </mt-datetime-picker>
+				<single-datepicker></single-datepicker>
 			</div>
 			<div class="input-box">
 				<h2 class="input-name">支付方式</h2>
@@ -43,9 +34,11 @@
 
 <script>
 import picker from '../components/base/picker'
+import SingleDatepicker from '../components/base/SingleDatepicker'
 export default {
 	components:{
-		picker
+		picker,
+		SingleDatepicker
 	},
 	methods:{
 		checkedAll(){
@@ -55,27 +48,10 @@ export default {
 				this.checkboxModel=true;
 			}
 		},
-	  //日期选择
-	  openDatePicker() {
-        this.$refs.pickerStart.open();
-    },
-	  handleDateConfirm(){
-	  	this.dateStartValue=this.formatDate(this.$refs.pickerStart.value)
-	  	console.log(this.dateStartValue)
-	  },
-	  formatDate(date){
-		   const y = date.getFullYear()
-		   let m = date.getMonth() + 1
-		   m = m < 10 ? '0' + m : m
-		   let d = date.getDate()
-		   d = d < 10 ? ('0' + d) : d
-		   return y + ' ' + m + ' ' + d
-		}
+	 
 	},
 	data () {
 	    return {
-	    	pickerDateVisible:null,//开始日期值
-	    	dateStartValue:this.formatDate(new Date()),//设置默认日期
 	    	Payslots:[
 	    		{
 	    			flex: 1,

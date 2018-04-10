@@ -3,12 +3,12 @@
 		<transition name="oderQuery">
 		<div class="oderQuery-box" v-show="!orderListShowContral">
 			<div class="input-box">
-				<h2 class="input-name">交易号</h2>
-				<div class="input-value"><input type="text" placeholder="请输入交易号"></div>
+				<h2 class="input-name">平台订单号</h2>
+				<div class="input-value"><input type="text" placeholder="请输入平台订单号"></div>
 			</div>
 			<div class="input-box">
-				<h2 class="input-name">商户交易号</h2>
-				<div class="input-value"><input type="text" placeholder="请输入商户交易号"></div>
+				<h2 class="input-name">订单号</h2>
+				<div class="input-value"><input type="text" placeholder="请输入订单号"></div>
 			</div>
 			<div class="input-box">
 				<h2 class="input-name">商户名称</h2>

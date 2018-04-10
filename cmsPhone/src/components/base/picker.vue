@@ -33,9 +33,9 @@ export default {
 	},
 	methods:{
 		onValuesChange(picker, values) { 
-				this.chooseValue = values[0]
-	      console.log(picker) 
-	      console.log(values) 
+		  this.chooseValue = values[0]
+	    console.log(picker) 
+	    console.log(values) 
 	  },
 	  handleClick(){
 	  	this.popupVisible=true

@@ -11,19 +11,10 @@
 			</div>
 			<div class="input-box">
 				  <h3 class="input-name">开户行</h3>
-					<div class="input-value" @click="handleClick"><input v-model="value" type="text" placeholder="请选择开户行"><i class="iconfont icon-qianjin"></i></div>
-					<mt-popup v-model="popupVisible" position="bottom" popup-transition="popup-fade">
-						<div class="picker-toolbar">  
-	            <span class="mint-select-cancel" @click="mintCancelBtn">取消</span>  
-	            <span class="mint-select-confirm" @click="mintConfirmBtn">确定</span>  
-	          </div>  
-						<mt-picker :slots="slots" @change="onValuesChange"></mt-picker>
-					</mt-popup>
+					<picker :slots="slots"></picker>
 			</div>
 			<div class="input-box">
 				<h3 class="input-name">开户所在地</h3>
-				<!-- <v-selection :selections="chooseLocal"></v-selection>
-				<v-selection :selections="chooseCity"></v-selection> -->
 				<div class="input-value" @click="handleCityClick()"><input v-model="cityvalue" type="text" placeholder="请选择省市">
 					<i class="iconfont icon-qianjin"></i>
 				</div>
@@ -54,26 +45,12 @@
 </template>
 
 <script>
-import VSelection from '../components/base/selection'
+import picker from '../components/base/picker'
 export default {
 	components:{
-		VSelection
+		picker
 	},
 	methods:{
-		onValuesChange(picker, values) { 
-		  this.value = values[0]
-	      console.log(picker) 
-	      console.log(values) 
-	  },
-	  handleClick(){
-	  	this.popupVisible = true
-	  },
-	  mintCancelBtn(){
-	  	this.popupVisible = false
-	  },
-	  mintConfirmBtn(){
-	  	this.popupVisible = false
-	  },
 	  onValuesCityChange(picker, values) { 
 				this.cityvalue = values[0]+' - '+values[1]
 	      console.log(picker) 
@@ -91,9 +68,7 @@ export default {
 	},
 	data () {
 	    return {
-	    	popupVisible:false,
 	    	popupCityVisible:false,
-	    	value:"",
 	    	cityvalue:"",
 	    	slots:[
 	    		{

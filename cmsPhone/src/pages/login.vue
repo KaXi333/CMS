@@ -3,20 +3,20 @@
 		<div class="login-bc"></div>
 		<div class="login-border">
 			<h1>
-				<strong>登录商户</strong>
+				<strong>{{$t("login.LoginTitle")}}</strong>
 				<em>Management System</em>
 			</h1>
 			<div class="changePass-box">
 				<div class="login-input-value">
 					<i class="iconfont icon-dengluyemianyonghuming"></i>
-					<input v-model="usernameModel" type="email" placeholder="邮箱">
+					<input v-model="usernameModel" type="email" :placeholder="$t('login.email')">
 				</div>
 				<span class="g-form-error">{{userNameerrorText}}</span>
 			</div>
 			<div class="changePass-box">
 				<div class="login-input-value">
 				<i class="iconfont icon-mima"></i>
-				<input v-model="passwordModel" type="password" placeholder="密码">
+				<input v-model="passwordModel" type="password" :placeholder="$t('login.password')">
 				</div>
 				<span class="g-form-error">{{passworderrorText}}</span>
 			</div>
@@ -24,7 +24,7 @@
 				<div class="login-input-value yzm-continer">
 					<div class="yzm-box">
 						<i class="iconfont icon-zhucedengluyanzhengma"></i>
-						<input v-model="identifyCodevalue" class="yzm-input" type="text" placeholder="验证码">
+						<input v-model="identifyCodevalue" class="yzm-input" type="text" :placeholder="$t('login.code')">
 					</div>
 					<div class="code" @click="refreshCode">
 						<identify :identifyCode="identifyCode" :contentWidth="contentWidth" :contentHeight="contentHeight"></identify>
@@ -33,10 +33,10 @@
 				<span class="g-form-error">{{idenCodeerrorText}}</span>
 			</div>
 			<div class="login-box">
-				<button class="login-btn changePass-tab-bc" @click="loginFn">立即登录</button>
+				<button class="login-btn changePass-tab-bc" @click="loginFn">{{$t("login.loginBtn")}}</button>
 			</div>
-			<div class="language-btn"><span>English</span>|<span>中文</span></div>
-			<div class="footer"><p>© 2016-2017 版权所有</p></div>
+			<div class="language-btn"><span @click="enLang">English</span>|<span @click="cnLang">中文</span></div>
+			<div class="footer"><p>{{$t("login.reserve")}}</p></div>
 		</div>
 	</div>
 </template>
@@ -72,6 +72,14 @@ export default {
 		this.makeCode(this.identifyCodes,4)
 	},
 	methods:{
+		//设置成英文
+		enLang(){
+			this.$i18n.locale='en'
+		},
+		//设置成中文
+		cnLang(){
+			this.$i18n.locale='cn'
+		},
 		loginFn(){
 			//console.log(localStorage.getItem('userName'))
 			if(this.usernameModel!=this.userInformation[0].userName){
@@ -88,6 +96,7 @@ export default {
 				this.idenCodeerrorText='验证码错误'
 			}else{
 				this.$router.push({path:"indexPage"})
+				localStorage.setItem("tabCont", '后台首页')
 			}
 		},
 		randomNum(min, max) {
@@ -110,9 +119,6 @@ export default {
 </script>
 
 <style scoped>
-	.login-continer{
-		
-	}
 	.login-bc{
 		background: rgb(20, 20, 20);
 		width: 100%;

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import i18n from './i18n'
 import 'lib-flexible/flexible.js'
 import './assets/iconfont/iconfont.css'
 import 'mint-ui/lib/style.css'
@@ -105,6 +106,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  i18n:i18n,
   components: { App },
   template: '<App/>'
 })

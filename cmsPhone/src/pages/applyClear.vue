@@ -18,26 +18,12 @@
 				<div class="input-value disableda-ctive"><input v-model="onlineMoneyValue" disabled="disabled" type="text"></div>
 			</div>
 			<div class="input-box">
-				  <h3 class="input-name">选择类型</h3>
-					<div class="input-value" @click="handleClick"><input v-model="value" type="text" placeholder="选择结算类型"><i class="iconfont icon-qianjin"></i></div>
-					<mt-popup v-model="popupVisible" position="bottom" popup-transition="popup-fade">
-						<div class="picker-toolbar">  
-	            <span class="mint-select-cancel" @click="mintCancelBtn">取消</span>  
-	            <span class="mint-select-confirm" @click="mintConfirmBtn">确定</span>  
-	          </div>  
-						<mt-picker :slots="slots" @change="onValuesChange"></mt-picker>
-					</mt-popup>
+				<h3 class="input-name">选择类型</h3>
+				<picker :slots="slots"></picker>
 			</div>
 			<div class="input-box">
-				  <h3 class="input-name">选择银行卡</h3>
-					<div class="input-value" @click="handleBankClick"><input v-model="Bankvalue" type="text" placeholder="选择银行卡"><i class="iconfont icon-qianjin"></i></div>
-					<mt-popup v-model="popupBankVisible" position="bottom" popup-transition="popup-fade">
-						<div class="picker-toolbar">  
-	            <span class="mint-select-cancel" @click="mintBankCancelBtn">取消</span>  
-	            <span class="mint-select-confirm" @click="mintBankConfirmBtn">确定</span>  
-	          </div>  
-						<mt-picker :slots="bankslots" @change="onValuesBankChange"></mt-picker>
-					</mt-popup>
+				<h3 class="input-name">选择银行卡</h3>
+				<picker :slots="bankslots"></picker>	
 			</div>
 			<div class="input-box">
 				<h3 class="input-name">金额</h3>
@@ -61,40 +47,10 @@
 </template>
 
 <script>
-import VSelection from '../components/base/selection'
+import picker from '../components/base/picker'
 export default {
 	components:{
-		VSelection
-	},
-	methods:{
-		onValuesChange(picker, values) { 
-				this.value = values[0]
-	      console.log(picker) 
-	      console.log(values) 
-	  },
-	  handleClick(){
-	  	this.popupVisible = true
-	  },
-	  mintCancelBtn(){
-	  	this.popupVisible = false
-	  },
-	  mintConfirmBtn(){
-	  	this.popupVisible = false
-	  },
-	  onValuesBankChange(picker, values) { 
-				this.Bankvalue = values[0]
-	      console.log(picker) 
-	      console.log(values) 
-	  },
-	  handleBankClick(){
-	  	this.popupBankVisible=true
-	  },
-	  mintBankCancelBtn(){
-	  	this.popupBankVisible=false
-	  },
-	  mintBankConfirmBtn(){
-	  	this.popupBankVisible=false
-	  }
+		picker
 	},
 	data () {
 	    return {
@@ -102,10 +58,6 @@ export default {
 	    	scanMoneyValue:"5269.19",
 	    	H5MoneyValue:"3416.63",
 	    	onlineMoneyValue:"0.00",
-	    	popupVisible:false,
-	    	popupBankVisible:false,
-	    	value:"",
-	    	Bankvalue:"",
 	    	slots:[
 	    		{
 	    			flex: 1,

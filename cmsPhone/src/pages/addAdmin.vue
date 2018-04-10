@@ -40,7 +40,6 @@ export default {
 <style scoped>
 	.changePass-border{
 		padding:0 30px;
-		padding-top: 60px;
 	}
 
 </style>

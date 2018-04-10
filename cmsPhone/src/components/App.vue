@@ -11,10 +11,10 @@ Vue.component(Picker.name, Picker);
 Vue.component(Popup.name, Popup);
 Vue.component(DatetimePicker.name, DatetimePicker)
 Vue.component(Checklist.name, Checklist)
+Vue.prototype.tabCont = '后台首页'
 export default {
   data () {
     return {
-
     }
   }
 }
@@ -179,23 +179,6 @@ li{list-style: none;}
     color: #BEBEBE;
     height:100%;
   }
-/*  .input-value{
-    float:left;
-    height: 60px;
-    line-height: 60px;
-    font-size: 26px;
-    
-  }
-  .input-value input{
-    height: 60px;
-    padding-left: 16px;
-    width: 400px;
-    outline: none;
-    border: none;
-    background: #fff;
-    line-height: 60px;
-    font-size: 26px;
-  }*/
   
 	
   .list-box{
@@ -262,7 +245,8 @@ li{list-style: none;}
   .menu-title{
     float:left;
     font-size: 36px;
-    color:#7F7F7F;
+    color:#009688;
+    font-weight: bold;
   }
   .menu-button{
     float: right;
