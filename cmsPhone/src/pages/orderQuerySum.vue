@@ -111,14 +111,6 @@ export default {
 	.list-title, .list-item{
 		width: 248px;
 	}
-	.detailBtn{
-		width: 80px;
-		height:50px;
-		line-height: 50px;
-		border: none;
-		color:#fff;
-		background: #009688;
-	}
 	h3:last-child{
 		border-right: none;
 	}

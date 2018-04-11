@@ -40,13 +40,11 @@
 			<div class="list-box">
 				<div class="list-content">
 					<div class="list-title-box">
-					  <h3 class="list-title"><input type="checkbox" class="input-checkbox"></h3>
 						<h3 class="list-title" v-for="(item,index) in bankTitles">{{item}}</h3>
 					</div>
 					<div class="list-value-box">
 						<div class="list-value" v-for="(item,index) in bankCardLists">
 							<ul class="clearFloat">
-							  <li class="list-item"><input v-model='checkboxModel' type="checkbox" class="input-checkbox"></li>
 								<li class="list-item">{{item.name}}</li>
 								<li class="list-item">{{item.state}}</li>
 								<li class="list-item">{{item.rate}}</li>
@@ -56,7 +54,11 @@
 								<li class="list-item">{{item.signTime}}</li>
 								<li class="list-item">{{item.expireTime}}</li>
 								<li class="list-item">{{item.payTime}}</li>
-								<li class="list-item"><button class="detailBtn">详情</button></li>
+								<li class="list-item">{{item.checkTime}}</li>
+								<li class="list-item">{{item.endTime}}</li>
+								<li class="list-item">{{item.zhPlace}}</li>
+								<li class="list-item">{{item.khwg}}</li>
+								<li class="list-item">{{item.jystate}}</li>
 							</ul>
 						</div>
 					</div>
@@ -104,78 +106,38 @@ export default {
 	    			textAlign:"center"
 	    		}
 	    	] ,
-	    	checkboxModel:["1","2","4"],
-	    	checkboxData:[{
-		      id:'1',
-		      value:'苹果'
-		    },{
-		      id:'2',
-		      value:'荔枝'
-		    },{
-		      id:'3',
-		      value:'香蕉'
-		    },{
-		      id:'4',
-		      value:'火龙果'
-		    },{
-		      id:'5',
-		      value:'西瓜'
-		    }],
 	    	bankCardLists:[
     		  {
 	          name: '2018-04-04 15:35:31',
-	          state: '1770963469' ,
-	          rate: 'jjl_201804041535311090',
-	          minSum: '343c9d561c317c7662621f9e1c30e004',
-	          maxSum: '3000:00' ,
+	          state: '2018030723045530877' ,
+	          rate: '吴遵林',
+	          minSum: '6217007200050257412',
+	          maxSum: 'D0结算' ,
 	          md5Key: '1:00' ,
-	          signTime: '微信扫码支付' ,
-	          expireTime: '未支付',
-	          payTime: '2019-03-17 00:00:00'
+	          signTime: '1:00' ,
+	          expireTime: '审核未通过',
+	          payTime: '2019-03-17 00:00:00',
+	          checkTime: '2018-03-07 23:05:34',
+	          endTime: '2018-03-07 23:05:34',
+	          zhPlace: '广东省/深圳市',
+	          khwg: '中国建设银行股份有限公司深圳盐田支行',
+	          jystate: '成功', 
 	        },
 	        {
 	          name: '2018-04-04 15:35:31',
-	          state: '1770963469' ,
-	          rate: 'jjl_201804041535311090',
-	          minSum: '343c9d561c317c7662621f9e1c30e004',
-	          maxSum: '1000:00' ,
-	          md5Key: '0.02' ,
-	          signTime: '微信扫码支付' ,
-	          expireTime: '未支付',
-	          payTime: '2019-03-17 00:00:00' 
-	        },
-	        {
-	          name: '2018-04-04 15:35:31',
-	          state: '1770963469' ,
-	          rate: 'jjl_201804041535311090',
-	          minSum: '343c9d561c317c7662621f9e1c30e004',
-	          maxSum: '8700:00' ,
-	          md5Key: '0.50' ,
-	          signTime: '微信扫码支付' ,
-	          expireTime: '未支付',
-	          payTime: '2019-03-17 00:00:00' 
-	        },
-	        {
-	          name: '2018-04-04 15:35:31',
-	          state: '1770963469' ,
-	          rate: 'jjl_201804041535311090',
-	          minSum: '343c9d561c317c7662621f9e1c30e004',
-	          maxSum: '4500:00' ,
-	          md5Key: '0.05' ,
-	          signTime: '微信扫码支付' ,
-	          expireTime: '未支付',
-	          payTime: '2019-03-17 00:00:00' 
-	        },
-	        {
-	          name: '2018-04-04 15:35:31',
-	          state: '1770963469' ,
-	          rate: 'jjl_201804041535311090',
-	          minSum: '343c9d561c317c7662621f9e1c30e004',
-	          maxSum: '8700:00' ,
-	          md5Key: '0.80' ,
-	          signTime: '微信扫码支付' ,
-	          expireTime: '未支付' ,
-	          payTime: '2019-03-17 00:00:00' 
+	          state: '2018030723045530877' ,
+	          rate: '吴遵林',
+	          minSum: '6217007200050257412',
+	          maxSum: 'D0结算' ,
+	          md5Key: '1:00' ,
+	          signTime: '1:00' ,
+	          expireTime: '审核未通过',
+	          payTime: '2019-03-17 00:00:00',
+	          checkTime: '2018-03-07 23:05:34',
+	          endTime: '2018-03-07 23:05:34',
+	          zhPlace: '广东省/深圳市',
+	          khwg: '中国建设银行股份有限公司深圳盐田支行',
+	          jystate: '成功', 
 	        }
 	    	],
 	    	bankTitles:[
@@ -184,11 +146,15 @@ export default {
 	    		"银行账户名",
 	    		"银行账户",
 	    		"结算类型",
-	    		"手续费",
 	    		"金额",
 	    		"手续费",
 	    		"审核状态",
-	    		"交易商户号"
+	    		"商户交易号",
+	    		"审核时间",
+	    		"完成时间",
+	    		"账户所在地",
+	    		"开户网关",
+	    		"交易状态"
 	    	]
 		} 
 	}
@@ -259,7 +225,7 @@ export default {
 		margin: 30px 0;
 	}
 	.list-content{
-		width: 2771px;
+		width: 3875px;
 		margin-top: 0;
 	}
 	.detailBtn{
@@ -272,40 +238,46 @@ export default {
 		background: #009688;
 	}
 	li:nth-child(1){
-		width: 80px;
-	}
-	li:nth-child(2){
 		width: 300px;
 	}
-	li:nth-child(3){
-		width: 200px;
+	li:nth-child(2){
+		width: 330px;
 	}
 	li:nth-child(4){
-		width: 350px;
+		width: 330px;
 	}
-	li:nth-child(5){
-		width: 530px;
+	li:nth-child(9){
+		width: 400px;
 	}
 	li:nth-child(10){
 		width: 300px;
 	}
-	h3:nth-child(1){
-		width: 80px;
-	}
-	h3:nth-child(2){
+	li:nth-child(11){
 		width: 300px;
 	}
-	h3:nth-child(3){
-		width: 200px;
+	li:nth-child(13){
+		width: 500px;
+	}
+	h3:nth-child(1){
+		width: 300px;
+	}
+	h3:nth-child(2){
+		width: 330px;
 	}
 	h3:nth-child(4){
-		width: 350px;
+		width: 330px;
 	}
-	h3:nth-child(5){
-		width: 530px;
+	h3:nth-child(9){
+		width: 400px;
 	}
 	h3:nth-child(10){
 		width: 300px;
+	}
+	h3:nth-child(11){
+		width: 300px;
+	}
+	h3:nth-child(13){
+		width: 500px;
 	}
 
 </style>

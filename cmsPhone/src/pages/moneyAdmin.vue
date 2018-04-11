@@ -1,10 +1,16 @@
 <template>
 	<div class="moneyAdmin-continer">
-		<div class="select-box">
-			<v-selection :selections="chooseTypes"></v-selection>
-			<v-selection :selections="chooseMoneyTypes"></v-selection>
-			<button class="checkBtn" type="">查询</button>
-		</div>
+		<div class="input-box">
+				<h2 class="input-name">流动类型</h2>
+				<picker :slots="chooseTypes"></picker>
+			</div>
+			<div class="input-box">
+				<h2 class="input-name">资金类型</h2>
+				<picker :slots="chooseMoneyTypes"></picker>	
+			</div>
+			<div class="checkBtn-box">
+				<button class="checkBtn longCheckBtn" type="">查询</button>
+			</div>
 		<div class="list-box">
 			<div class="list-content">
 				<div class="list-title-box">
@@ -13,6 +19,7 @@
 				<div class="list-value-box">
 					<div class="list-value" v-for="(item,index) in monAdmList">
 						<ul class="clearFloat">
+							<li class="list-item">{{item.time}}</li>
 							<li class="list-item">{{item.name}}</li>
 							<li class="list-item">{{item.flowType}}</li>
 							<li class="list-item">{{item.moneyType}}</li>
@@ -29,47 +36,30 @@
 </template>
 
 <script>
-import VSelection from '../components/base/selection'
+import picker from '../components/base/picker'
 export default {
 	components:{
-		VSelection
+		picker
 	},
 	data () {
 	    return {
 	    	chooseTypes:[
-	    		{
-		          label: '类型',
-		          value: 0
-		        },
-		        {
-		          label: '收款',
-		          value: 1
-		        },
-		        {
-		          label: '付款',
-		          value: 2
-		        },
+	        {
+	    			flex: 1,
+	    			values: ['收款', '付款'],
+	    			textAlign:"center"
+	    		}
 	    	],
 	    	chooseMoneyTypes:[
-	    		{
-		          label: '资金类型',
-		          value: 0
-		        },
-		        {
-		          label: 'D0资金',
-		          value: 1
-		        },
-		        {
-		          label: 'T1资金',
-		          value: 2
-		        },
-		        {
-		          label: 'T0资金',
-		          value: 3
-		        }
+	        {
+	    			flex: 1,
+	    			values: ['D0资金', 'T1资金','T0资金'],
+	    			textAlign:"center"
+	    		}
 	    	],
 	    	monAdmList:[
 	    		{
+	    				time:'2018-04-03 17:19:55',
 		          name: '960178541',
 		          flowType: '收款' ,
 		          moneyType: 'T1余额',
@@ -79,6 +69,7 @@ export default {
 		          note: 'T1余额'
 		        },
 		        {
+		        	time:'2018-04-03 17:19:55',
 		          name: '960178541',
 		          flowType: '收款' ,
 		          moneyType: 'T1余额',
@@ -88,6 +79,7 @@ export default {
 		          note: 'T1余额'
 		        },
 		        {
+		        	time:'2018-04-03 17:19:55',
 		          name: '960178541',
 		          flowType: '收款' ,
 		          moneyType: 'T1余额',
@@ -97,6 +89,7 @@ export default {
 		          note: 'T1余额'
 		        },
 		         {
+		         	time:'2018-04-03 17:19:55',
 		          name: '960178541',
 		          flowType: '收款' ,
 		          moneyType: 'T1余额',
@@ -106,6 +99,7 @@ export default {
 		          note: 'T1余额'
 		        },
 		         {
+		         	time:'2018-04-03 17:19:55',
 		          name: '960178541',
 		          flowType: '收款' ,
 		          moneyType: 'T1余额',
@@ -116,12 +110,13 @@ export default {
 		        }
 	    	],
 	    	checkTitleList:[
+	    		"流动时间",
 	    		"账户名称",
 	    		"流动类型",
 	    		"资金类型",
 	    		"流动前资金",
 	    		"流动资金",
-	    		"流动后资金",
+	    	  "流动后资金",
 	    		"备注"
 	    	]
 		} 
@@ -130,10 +125,17 @@ export default {
 </script>
 
 <style scoped>
-	.moneyAdmin-continer{padding: 10px;}
-	.select-box{
-		background: #F0F0F0;
-		padding: 20px;
+	.moneyAdmin-continer{
+		padding:0 30px;
+	}
+	.list-content {
+    width: 1708px; 
+	}
+	li:nth-child(1){
+		width: 300px;
+	}
+	h3:nth-child(1){
+		width: 300px;
 	}
 	
 	

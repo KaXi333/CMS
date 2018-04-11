@@ -42,21 +42,23 @@
 					<div class="list-title-box">
 						<h3 class="list-title" v-for="(item,index) in bankTitles">{{item}}</h3>
 					</div>
-					<div class="list-value-box">
-						<div class="list-value" v-for="(item,index) in bankCardLists">
-							<ul class="clearFloat">
-								<li class="list-item">{{item.name}}</li>
-								<li class="list-item">{{item.state}}</li>
-								<li class="list-item">{{item.rate}}</li>
-								<li class="list-item">{{item.minSum}}</li>
-								<li class="list-item">{{item.maxSum}}</li>
-								<li class="list-item">{{item.md5Key}}</li>
-								<li class="list-item">{{item.signTime}}</li>
-								<li class="list-item">{{item.expireTime}}</li>
-								<li class="list-item">{{item.payTime}}</li></li>
-							</ul>
+					<mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" ref="loadmore">
+				    <div class="list-value-box" :style="{height:listH}" >
+							<div class="list-value" v-for="(item,index) in bankCardLists">
+								<ul class="clearFloat">
+									<li class="list-item">{{item.name}}</li>
+									<li class="list-item">{{item.state}}</li>
+									<li class="list-item">{{item.rate}}</li>
+									<li class="list-item">{{item.minSum}}</li>
+									<li class="list-item">{{item.maxSum}}</li>
+									<li class="list-item">{{item.md5Key}}</li>
+									<li class="list-item">{{item.signTime}}</li>
+									<li class="list-item">{{item.expireTime}}</li>
+									<li class="list-item">{{item.payTime}}</li></li>
+								</ul>
+							</div>
 						</div>
-					</div>
+				  </mt-loadmore>
 				</div>
 			</div>
 		</div>
@@ -80,10 +82,31 @@ export default {
 		//返回按钮
 		orderListBackBtn(){
 			this.orderListShowContral=!this.orderListShowContral
+		},
+		handleBottomChange(status) {
+      this.bottomStatus = status
+      console.log(this.bottomStatus)
+    },
+    loadBottom() {
+		  // 加载更多数据
+		  setTimeout(() => {
+         let lastValue = this.bankCardLists[this.bankCardLists.length - 1];
+         if (this.bankCardLists.length < 40) {
+           for (let i = 1; i <= 10; i++) {
+             this.bankCardLists.push(lastValue);
+           }
+         } else {
+           this.allLoaded = true;
+         }
+         console.log(this.bankCardLists)
+         this.$refs.loadmore.onBottomLoaded();
+       }, 1500);
 		}
 	},
 	data () {
 	    return {
+	    	bottomStatus: '',
+	    	listH:'',
 	    	orderListShowContral:false,//控制订单查询页列表的显示隐藏
 	    	Payslots:[
 	    		{
@@ -99,23 +122,6 @@ export default {
 	    			textAlign:"center"
 	    		}
 	    	] ,
-	    	checkboxModel:["1","2","4"],
-	    	checkboxData:[{
-		      id:'1',
-		      value:'苹果'
-		    },{
-		      id:'2',
-		      value:'荔枝'
-		    },{
-		      id:'3',
-		      value:'香蕉'
-		    },{
-		      id:'4',
-		      value:'火龙果'
-		    },{
-		      id:'5',
-		      value:'西瓜'
-		    }],
 	    	bankCardLists:[
     		  {
 	          name: '2018-04-04 15:35:31',
@@ -159,6 +165,83 @@ export default {
 	          md5Key: '0.05' ,
 	          signTime: '微信扫码支付' ,
 	          expireTime: '未支付',
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
 	          payTime: '2019-03-17 00:00:00' 
 	        },
 	        {
@@ -255,6 +338,11 @@ export default {
 	.list-content{
 		width: 2490px;
 		margin-top: 0;
+		border:none;
+	}
+	.list-value-box{
+		height:900px;
+		overflow: scroll;
 	}
 	li:nth-child(1){
 		width: 300px;

@@ -6,11 +6,12 @@
 
 <script>
 import Vue from 'vue'
-import { Picker,Popup,DatetimePicker,Checklist } from 'mint-ui';
+import { Picker,Popup,DatetimePicker,Checklist,Loadmore  } from 'mint-ui';
 Vue.component(Picker.name, Picker);
 Vue.component(Popup.name, Popup);
 Vue.component(DatetimePicker.name, DatetimePicker)
 Vue.component(Checklist.name, Checklist)
+Vue.component(Loadmore.name, Loadmore)
 Vue.prototype.tabCont = '后台首页'
 export default {
   data () {
@@ -189,7 +190,6 @@ li{list-style: none;}
   .list-content{
     border:1px solid #E0E0E0;
     margin-top: 50px;
-    /*width: 1407px;*/
     
   }
   .list-title-box{
