@@ -19,9 +19,12 @@ export default {
 	methods:{
 		chooseMeunBtn(index,state){
 			if(state){
+				if(this.nowIndex===index){
+					this.nowIndex=""
+				}else{
 					this.nowIndex=index
+				}
 			}
-			
 		},
 		goPathTo(state,tabCont,pathlink){
 			if(!state){

@@ -181,14 +181,11 @@ li{list-style: none;}
     height:100%;
   }
   
-	
+	/*查询列表样式*/
   .list-box{
     width: 100%;
-    overflow:hidden;
-    overflow-x:auto;
   }
   .list-content{
-    border:1px solid #E0E0E0;
     margin-top: 50px;
     
   }
@@ -198,13 +195,20 @@ li{list-style: none;}
     line-height: 80px;
   }
   .list-title,.list-item{
-    width: 200px;
     float:left;
     height:80px;
     line-height: 80px;
     text-align: center;
-    border-right: 1px solid #E0E0E0;
     font-size: 26px;
+  }
+  .list-title{
+    font-weight: bold;
+  }
+  .list-item-time{
+    color: #9D9D9D;
+  }
+  .list-value{
+    border-bottom: 1px solid #E0E0E0
   }
   .clearFloat:after{
     display: block;
@@ -217,8 +221,52 @@ li{list-style: none;}
     zoom:1;
   }
 
-
-
+  /*查询结果列表样式*/
+  .list-item-num{
+    width: 100px;
+    border-right: 1px solid #E0E0E0;
+    color: #009688;
+    font-size: 22px;
+  }
+  .list-item-tit{
+    width: 649px;
+    font-size: 22px;
+  }
+  h4:nth-child(1){
+    width: 100px;
+    border-right: 1px solid #E0E0E0;
+    color: #009688;
+    font-weight: bold;
+  }
+  h4:nth-child(2){
+    width: 649px;
+  }
+  .list-item-detail{
+    width: 100%;
+    font-size: 24px;
+    height:61px;
+    line-height: 61px;
+  }
+  .list-item-detail p{
+    float: left;
+    line-height:61px;
+    text-align: center;
+  }
+  .list-item-name{
+    width: 200px;
+    background-color: #009688;
+    color:#fff;
+    border-top: 1px solid #009688;
+  }
+  .list-item-value{
+    width: 550px;
+    border-top: 1px solid #E0E0E0;
+  }
+  .list-value-box{
+    height:900px;
+    overflow: scroll;
+  }
+  /*....*/
   .icon-caidan{
     font-size:70px;
     float: right;

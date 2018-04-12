@@ -40,28 +40,62 @@
 			<div class="list-box">
 				<div class="list-content">
 					<div class="list-title-box">
-						<h3 class="list-title" v-for="(item,index) in bankTitles">{{item}}</h3>
+						<h4 class="list-title" v-for="(item,index) in bankTitles">{{item}}</h4>
 					</div>
-					<div class="list-value-box">
-						<div class="list-value" v-for="(item,index) in bankCardLists">
-							<ul class="clearFloat">
-								<li class="list-item">{{item.name}}</li>
-								<li class="list-item">{{item.state}}</li>
-								<li class="list-item">{{item.rate}}</li>
-								<li class="list-item">{{item.minSum}}</li>
-								<li class="list-item">{{item.maxSum}}</li>
-								<li class="list-item">{{item.md5Key}}</li>
-								<li class="list-item">{{item.signTime}}</li>
-								<li class="list-item">{{item.expireTime}}</li>
-								<li class="list-item">{{item.payTime}}</li>
-								<li class="list-item">{{item.checkTime}}</li>
-								<li class="list-item">{{item.endTime}}</li>
-								<li class="list-item">{{item.zhPlace}}</li>
-								<li class="list-item">{{item.khwg}}</li>
-								<li class="list-item">{{item.jystate}}</li>
-							</ul>
+					<mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" ref="loadmore">
+				    <div class="list-value-box" >
+							<div class="list-value" v-for="(item,index) in bankCardLists">
+								<ul @click="checkDetailBtn(index)" class="clearFloat">
+									<li class="list-item list-item-num">{{index+1}}</li>
+									<li class="list-item list-item-tit">
+										<span>{{item.rate}}</span>
+										<span class="list-item-time">{{'('+item.name+')'}}</span>
+										<i class="iconfont" :class="[index===nowIndex?'icon-xiaosanjiaoup':'icon-sanjiao']"></i>
+									</li>
+								</ul>
+								<transition name="orderList">
+								<div v-show="index===nowIndex" class="list-item-detail-box">
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">创建时间</p>
+										<p class="list-item-value">{{item.name}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">商户名称</p>
+										<p class="list-item-value">{{item.state}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">平台订单号</p>
+										<p class="list-item-value">{{item.rate}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">商户订单号</p>
+										<p class="list-item-value">{{item.minSum}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">交易金额</p>
+										<p class="list-item-value">{{item.maxSum}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">手续费</p>
+										<p class="list-item-value">{{item.md5Key}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">类型</p>
+										<p class="list-item-value">{{item.signTime}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">状态</p>
+										<p class="list-item-value">{{item.expireTime}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">付款时间</p>
+										<p class="list-item-value">{{item.payTime}}</p>
+									</div>
+								</div>
+							</transition>
+							</div>
 						</div>
-					</div>
+				  </mt-loadmore>
 				</div>
 			</div>
 		</div>
@@ -224,60 +258,4 @@ export default {
 	.lotNotice{
 		margin: 30px 0;
 	}
-	.list-content{
-		width: 3875px;
-		margin-top: 0;
-	}
-	.detailBtn{
-		width: 80px;
-		height:50px;
-		line-height: 50px;
-		border: none;
-		font-size: 20px;
-		color:#fff;
-		background: #009688;
-	}
-	li:nth-child(1){
-		width: 300px;
-	}
-	li:nth-child(2){
-		width: 330px;
-	}
-	li:nth-child(4){
-		width: 330px;
-	}
-	li:nth-child(9){
-		width: 400px;
-	}
-	li:nth-child(10){
-		width: 300px;
-	}
-	li:nth-child(11){
-		width: 300px;
-	}
-	li:nth-child(13){
-		width: 500px;
-	}
-	h3:nth-child(1){
-		width: 300px;
-	}
-	h3:nth-child(2){
-		width: 330px;
-	}
-	h3:nth-child(4){
-		width: 330px;
-	}
-	h3:nth-child(9){
-		width: 400px;
-	}
-	h3:nth-child(10){
-		width: 300px;
-	}
-	h3:nth-child(11){
-		width: 300px;
-	}
-	h3:nth-child(13){
-		width: 500px;
-	}
-
 </style>

@@ -40,22 +40,59 @@
 			<div class="list-box">
 				<div class="list-content">
 					<div class="list-title-box">
-						<h3 class="list-title" v-for="(item,index) in bankTitles">{{item}}</h3>
+						<h4 class="list-title" v-for="(item,index) in bankTitles">{{item}}</h4>
 					</div>
 					<mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" ref="loadmore">
-				    <div class="list-value-box" :style="{height:listH}" >
+				    <div class="list-value-box" >
 							<div class="list-value" v-for="(item,index) in bankCardLists">
-								<ul class="clearFloat">
-									<li class="list-item">{{item.name}}</li>
-									<li class="list-item">{{item.state}}</li>
-									<li class="list-item">{{item.rate}}</li>
-									<li class="list-item">{{item.minSum}}</li>
-									<li class="list-item">{{item.maxSum}}</li>
-									<li class="list-item">{{item.md5Key}}</li>
-									<li class="list-item">{{item.signTime}}</li>
-									<li class="list-item">{{item.expireTime}}</li>
-									<li class="list-item">{{item.payTime}}</li></li>
+								<ul @click="checkDetailBtn(index)" class="clearFloat">
+									<li class="list-item list-item-num">{{index+1}}</li>
+									<li class="list-item list-item-tit">
+										<span>{{item.rate}}</span>
+										<span class="list-item-time">{{'('+item.name+')'}}</span>
+										<i class="iconfont" :class="[index===nowIndex?'icon-xiaosanjiaoup':'icon-sanjiao']"></i>
+									</li>
 								</ul>
+								<transition name="orderList">
+								<div v-show="index===nowIndex" class="list-item-detail-box">
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">创建时间</p>
+										<p class="list-item-value">{{item.name}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">商户名称</p>
+										<p class="list-item-value">{{item.state}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">平台订单号</p>
+										<p class="list-item-value">{{item.rate}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">商户订单号</p>
+										<p class="list-item-value">{{item.minSum}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">交易金额</p>
+										<p class="list-item-value">{{item.maxSum}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">手续费</p>
+										<p class="list-item-value">{{item.md5Key}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">类型</p>
+										<p class="list-item-value">{{item.signTime}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">状态</p>
+										<p class="list-item-value">{{item.expireTime}}</p>
+									</div>
+									<div class="list-item-detail clearFloat">
+										<p class="list-item-name">付款时间</p>
+										<p class="list-item-value">{{item.payTime}}</p>
+									</div>
+								</div>
+							</transition>
 							</div>
 						</div>
 				  </mt-loadmore>
@@ -83,6 +120,15 @@ export default {
 		orderListBackBtn(){
 			this.orderListShowContral=!this.orderListShowContral
 		},
+		//点击展开详情
+		checkDetailBtn(index){
+			if(this.nowIndex===index){
+				this.nowIndex=''
+			}else{
+				this.nowIndex=index
+			}
+		},
+		//监听下拉状态
 		handleBottomChange(status) {
       this.bottomStatus = status
       console.log(this.bottomStatus)
@@ -105,6 +151,7 @@ export default {
 	},
 	data () {
 	    return {
+	    	nowIndex:'',
 	    	bottomStatus: '',
 	    	listH:'',
 	    	orderListShowContral:false,//控制订单查询页列表的显示隐藏
@@ -257,15 +304,8 @@ export default {
 	        }
 	    	],
 	    	bankTitles:[
-	    		"创建时间",
-	    		"商户名称",
-	    		"平台订单号",
-	    		"商户订单号",
-	    		"交易金额",
-	    		"手续费",
-	    		"类型",
-	    		"状态",
-	    		"付款时间"
+	    		"序号",
+	    		"平台订单号+日期"
 	    	]
 		} 
 	}
@@ -299,6 +339,14 @@ export default {
 	.oderList-leave-to {
 	  transform: translateY(1000PX);
 	}
+	/*查询结果列表详情动画*/
+	.orderList-enter-active {
+	  transition: all 0.7s ease;
+	}
+	.orderList-enter {
+	  transform: translateX(600px);
+	}
+	/*查询页面样式*/
 	.oderQuery-box{
 		padding:0 30px;
 		zoom:1;
@@ -309,13 +357,6 @@ export default {
 	    clear: both;
 	    height:0;
 	    content: ".";
-	}
-	.check-input-value{
-		margin-right: 30px;
-		margin-bottom: 30px;
-	}
-	.check-input-value input{
-		width: 280px;
 	}
 	.checkBtn{
 		margin-right: 50px;
@@ -329,52 +370,18 @@ export default {
 	.date-input{
 		width: 185px;
 	}
-	.orderCheckList{
-		padding:0 15px;
-	}
 	.lotNotice{
 		margin: 30px 0;
+		padding:0 15px;
 	}
-	.list-content{
-		width: 2490px;
-		margin-top: 0;
-		border:none;
-	}
-	.list-value-box{
-		height:900px;
-		overflow: scroll;
-	}
-	li:nth-child(1){
-		width: 300px;
-	}
-	li:nth-child(2){
-		width: 200px;
-	}
-	li:nth-child(3){
-		width: 350px;
-	}
-	li:nth-child(4){
-		width: 530px;
-	}
-	li:nth-child(9){
-		width: 300px;
-		border-right:none;
-	}
-	h3:nth-child(1){
-		width: 300px;
-	}
-	h3:nth-child(2){
-		width: 200px;
-	}
-	h3:nth-child(3){
-		width: 350px;
-	}
-	h3:nth-child(4){
-		width: 530px;
-	}
-	h3:nth-child(9){
-		width: 300px;
-		border-right:none;
-	}
+	/*查询页面详情样式*/
+	.icon-xiaosanjiaoup,.icon-sanjiao{
+    line-height: 80px;
+    color:#009688;
+    margin-right: 10px;
+    font-size: 60px;
+    float: right;
+  }
+	
 
 </style>
