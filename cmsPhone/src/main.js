@@ -28,11 +28,11 @@ let router = new VueRouter({
 	mode:'history',
 	routes:[
 		{
-			path:'/login',
+			path:'/',
 			component:loginPage
 		},
 		{
-			path:'/',
+			path:'/IndexPage',
 			component:LayoutPage,
 			redirect: '/IndexPage',
 			children:[

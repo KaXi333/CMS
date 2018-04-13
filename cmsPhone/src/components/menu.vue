@@ -43,7 +43,7 @@ export default {
 	    	menuList:[
 	    		{
 	    			title:"后台首页",
-	    			path:"/",
+	    			path:"/IndexPage",
 	    			list:[
 	    			]
 	    		},
@@ -148,7 +148,7 @@ export default {
 	            },
 	            {
 	              name: '退出',
-	              path:"login"
+	              path:"/"
 	            }
 	    			]
 	    		}

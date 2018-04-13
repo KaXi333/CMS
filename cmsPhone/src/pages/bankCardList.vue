@@ -117,7 +117,6 @@ export default {
 	.delBtn{
 		background: #FF5809;
 	}
-	.list-content{width: 1525px;}
 	li:nth-child(2){
 		width: 370px;
 	}

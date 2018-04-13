@@ -6,7 +6,10 @@
 				<ul>
 					<li class="contInform-list" v-for="item in contInfList.list ">
 						<span class="contInform-namer">{{item.name+' :'}}</span>
-						<span class="contInform-value">{{item.value}}</span>
+						<span class="contInform-value">
+							<span :class="{countActive:contInfList.title==='资金信息'}">{{item.value}}</span>
+							<span v-if="contInfList.title==='资金信息'">(单位：RMB)</span>
+						</span>
 					</li>
 				</ul>
 			</div>
@@ -56,18 +59,18 @@ export default {
 	    			list:[
 		    			    {
 			              name: 'D0余额',
-			              value:"5,269.19 (单位：RMB)"
+			              value:"5,269.19"
 			            },
 			            {
 			              name: 'T1余额',
-			              value:"3,413.68 (单位：RMB)"
+			              value:"3,413.68"
 			            },
 			            {
 			              name: 'T1可用余额',
-			              value:"3,413.68 (单位：RMB)"
+			              value:"3,413.68"
 			            },{
 			              name: 'T0余额',
-			              value:"0.00 (单位：RMB)"
+			              value:"0.00"
 			            }
 	    			]
 	    		}
@@ -106,6 +109,10 @@ export default {
 		float: left;
 		width: 250px;
 		color:#8E8E8E;
+	}
+	.countActive{
+		color:red;
+		font-weight: bold;
 	}
 	li:last-child
 	{

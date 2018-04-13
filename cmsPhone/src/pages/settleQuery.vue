@@ -1,5 +1,5 @@
 <template>
-	<div class="oderQuery-continer">
+	<div class="">
 		<transition name="oderQuery">
 		<div class="oderQuery-box" v-show="!orderListShowContral">
 			<div class="input-box">
@@ -37,67 +37,7 @@
 				<button @click="orderListBackBtn" class="checkBtn" type="">返回</button>
 				<button class="checkBtn" type="">导出</button>
 			</div>
-			<div class="list-box">
-				<div class="list-content">
-					<div class="list-title-box">
-						<h4 class="list-title" v-for="(item,index) in bankTitles">{{item}}</h4>
-					</div>
-					<mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" ref="loadmore">
-				    <div class="list-value-box" >
-							<div class="list-value" v-for="(item,index) in bankCardLists">
-								<ul @click="checkDetailBtn(index)" class="clearFloat">
-									<li class="list-item list-item-num">{{index+1}}</li>
-									<li class="list-item list-item-tit">
-										<span>{{item.rate}}</span>
-										<span class="list-item-time">{{'('+item.name+')'}}</span>
-										<i class="iconfont" :class="[index===nowIndex?'icon-xiaosanjiaoup':'icon-sanjiao']"></i>
-									</li>
-								</ul>
-								<transition name="orderList">
-								<div v-show="index===nowIndex" class="list-item-detail-box">
-									<div class="list-item-detail clearFloat">
-										<p class="list-item-name">创建时间</p>
-										<p class="list-item-value">{{item.name}}</p>
-									</div>
-									<div class="list-item-detail clearFloat">
-										<p class="list-item-name">商户名称</p>
-										<p class="list-item-value">{{item.state}}</p>
-									</div>
-									<div class="list-item-detail clearFloat">
-										<p class="list-item-name">平台订单号</p>
-										<p class="list-item-value">{{item.rate}}</p>
-									</div>
-									<div class="list-item-detail clearFloat">
-										<p class="list-item-name">商户订单号</p>
-										<p class="list-item-value">{{item.minSum}}</p>
-									</div>
-									<div class="list-item-detail clearFloat">
-										<p class="list-item-name">交易金额</p>
-										<p class="list-item-value">{{item.maxSum}}</p>
-									</div>
-									<div class="list-item-detail clearFloat">
-										<p class="list-item-name">手续费</p>
-										<p class="list-item-value">{{item.md5Key}}</p>
-									</div>
-									<div class="list-item-detail clearFloat">
-										<p class="list-item-name">类型</p>
-										<p class="list-item-value">{{item.signTime}}</p>
-									</div>
-									<div class="list-item-detail clearFloat">
-										<p class="list-item-name">状态</p>
-										<p class="list-item-value">{{item.expireTime}}</p>
-									</div>
-									<div class="list-item-detail clearFloat">
-										<p class="list-item-name">付款时间</p>
-										<p class="list-item-value">{{item.payTime}}</p>
-									</div>
-								</div>
-							</transition>
-							</div>
-						</div>
-				  </mt-loadmore>
-				</div>
-			</div>
+			<check-list :listTitleslots="listTitle" :listslots="bankCardLists" :tilteslots="bankTitles"></check-list>
 		</div>
 		</transition>
 	</div>
@@ -106,10 +46,12 @@
 <script>
 import picker from '../components/base/picker'
 import datepicker from '../components/base/Datepicker'
+import checkList from '../components/checkList'
 export default {
 	components:{
 		picker,
-		datepicker
+		datepicker,
+		checkList
 	},
 	methods:{
 		//订单查询按钮
@@ -140,55 +82,154 @@ export default {
 	    			textAlign:"center"
 	    		}
 	    	] ,
+	    	listTitle:{
+		    		name: '创建时间',
+	          state: '商户名称' ,
+	          rate: '平台订单号',
+	          minSum: '商户订单号',
+	          maxSum: '交易金额' ,
+	          md5Key: '手续费' ,
+	          signTime: '类型' ,
+	          expireTime: '状态',
+	          payTime: '付款时间'
+        },
 	    	bankCardLists:[
     		  {
 	          name: '2018-04-04 15:35:31',
-	          state: '2018030723045530877' ,
-	          rate: '吴遵林',
-	          minSum: '6217007200050257412',
-	          maxSum: 'D0结算' ,
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '3000:00' ,
 	          md5Key: '1:00' ,
-	          signTime: '1:00' ,
-	          expireTime: '审核未通过',
-	          payTime: '2019-03-17 00:00:00',
-	          checkTime: '2018-03-07 23:05:34',
-	          endTime: '2018-03-07 23:05:34',
-	          zhPlace: '广东省/深圳市',
-	          khwg: '中国建设银行股份有限公司深圳盐田支行',
-	          jystate: '成功', 
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付',
+	          payTime: '2019-03-17 00:00:00'
 	        },
 	        {
 	          name: '2018-04-04 15:35:31',
-	          state: '2018030723045530877' ,
-	          rate: '吴遵林',
-	          minSum: '6217007200050257412',
-	          maxSum: 'D0结算' ,
-	          md5Key: '1:00' ,
-	          signTime: '1:00' ,
-	          expireTime: '审核未通过',
-	          payTime: '2019-03-17 00:00:00',
-	          checkTime: '2018-03-07 23:05:34',
-	          endTime: '2018-03-07 23:05:34',
-	          zhPlace: '广东省/深圳市',
-	          khwg: '中国建设银行股份有限公司深圳盐田支行',
-	          jystate: '成功', 
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '1000:00' ,
+	          md5Key: '0.02' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付',
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.50' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付',
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '4500:00' ,
+	          md5Key: '0.05' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付',
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
+	        },
+	        {
+	          name: '2018-04-04 15:35:31',
+	          state: '1770963469' ,
+	          rate: 'jjl_201804041535311090',
+	          minSum: '343c9d561c317c7662621f9e1c30e004',
+	          maxSum: '8700:00' ,
+	          md5Key: '0.80' ,
+	          signTime: '微信扫码支付' ,
+	          expireTime: '未支付' ,
+	          payTime: '2019-03-17 00:00:00' 
 	        }
 	    	],
 	    	bankTitles:[
-	    		"提交时间",
-	    		"交易号",
-	    		"银行账户名",
-	    		"银行账户",
-	    		"结算类型",
-	    		"金额",
-	    		"手续费",
-	    		"审核状态",
-	    		"商户交易号",
-	    		"审核时间",
-	    		"完成时间",
-	    		"账户所在地",
-	    		"开户网关",
-	    		"交易状态"
+	    		"序号",
+	    		"银行账户+日期"
 	    	]
 		} 
 	}
@@ -196,66 +237,7 @@ export default {
 </script>
 
 <style scoped>
-  /*查询展示动画*/
-	.oderQuery-enter-active {
-	  transition: all 0.5s ease;
-	}
-	.oderQuery-leave-active {
-	  transition: all 0.5s ease;
-	}
-	.oderQuery-enter {
-	  transform: translateX(-100%);
-	}
-	.oderQuery-leave-to {
-	  transform: translateX(-100%);
-	}
-	/*查询结果列表动画*/
-	.oderList-enter-active {
-	  transition: all 1s ease;
-	}
-	.oderList-leave-active {
-	  transition: all 0.5s ease;
-	}
-	.oderList-enter {
-	  transform: translateY(2000PX);
-	}
-	.oderList-leave-to {
-	  transform: translateY(1000PX);
-	}
-	.oderQuery-box{
-		padding:0 30px;
-		zoom:1;
-	}
-	.oderQuery-box:after{
-		display: block;
-	    visibility: hidden;
-	    clear: both;
-	    height:0;
-	    content: ".";
-	}
-	.check-input-value{
-		margin-right: 30px;
-		margin-bottom: 30px;
-	}
-	.check-input-value input{
-		width: 280px;
-	}
-	.checkBtn{
-		margin-right: 50px;
-	}
-	.longCheckBtn{
-		margin:0;
-	}
-	.mint-datetime-cancel{
-		line-height: 70px;
-	}
 	.date-input{
 		width: 185px;
-	}
-	.orderCheckList{
-		padding:0 15px;
-	}
-	.lotNotice{
-		margin: 30px 0;
 	}
 </style>

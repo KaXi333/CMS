@@ -80,6 +80,7 @@ li{list-style: none;}
     font-size: 28px;
     line-height: 60px;
     border-radius: 5px;
+    margin-right: 50px;
   }
   .longCheckBtn{
     width: 100%;
@@ -105,7 +106,7 @@ li{list-style: none;}
 		height: 90px; 
 		width: 480px;
 		line-height: 90px;
-    	font-size: 28px;
+    font-size: 28px;
 	}
 	.input-value input {
       width:430px; 
@@ -180,93 +181,65 @@ li{list-style: none;}
     color: #BEBEBE;
     height:100%;
   }
-  
-	/*查询列表样式*/
-  .list-box{
-    width: 100%;
-  }
-  .list-content{
-    margin-top: 50px;
-    
-  }
-  .list-title-box{
-    background: #F0F0F0;
-    height:80px;
-    line-height: 80px;
-  }
-  .list-title,.list-item{
-    float:left;
-    height:80px;
-    line-height: 80px;
-    text-align: center;
-    font-size: 26px;
-  }
-  .list-title{
-    font-weight: bold;
-  }
-  .list-item-time{
-    color: #9D9D9D;
-  }
-  .list-value{
-    border-bottom: 1px solid #E0E0E0
-  }
-  .clearFloat:after{
-    display: block;
-    visibility: hidden;
-    clear: both;
-    height:0;
-    content: ".";
-  }
-  .clearFloat{
+  /*查询页面所有优势....开始*/
+  /*查询页面样式*/
+  .oderQuery-box{
+    padding:0 30px;
     zoom:1;
   }
+  .oderQuery-box:after{
+    display: block;
+      visibility: hidden;
+      clear: both;
+      height:0;
+      content: ".";
+  }
+  .longCheckBtn{
+    margin:0;
+  }
+  .mint-datetime-cancel{
+    line-height: 70px;
+  }
+  .lotNotice{
+    margin: 30px 0;
+    padding:0 15px;
+  }
+  /*查询展示动画*/
+  .oderQuery-enter-active {
+    transition: all 0.5s ease;
+  }
+  .oderQuery-leave-active {
+    transition: all 0.5s ease;
+  }
+  .oderQuery-enter {
+    transform: translateX(-100%);
+  }
+  .oderQuery-leave-to {
+    transform: translateX(-100%);
+  }
+  /*查询结果列表动画*/
+  .oderList-enter-active {
+    transition: all 1s ease;
+  }
+  .oderList-leave-active {
+    transition: all 0.5s ease;
+  }
+  .oderList-enter {
+    transform: translateY(2000PX);
+  }
+  .oderList-leave-to {
+    transform: translateY(1000PX);
+  }
+  /*查询结果列表详情动画*/
+  .orderList-enter-active {
+    transition: all 0.7s ease;
+  }
+  .orderList-enter {
+    transform: translateX(600px);
+  }
+  /*查询页面所有样式....结束*/
 
-  /*查询结果列表样式*/
-  .list-item-num{
-    width: 100px;
-    border-right: 1px solid #E0E0E0;
-    color: #009688;
-    font-size: 22px;
-  }
-  .list-item-tit{
-    width: 649px;
-    font-size: 22px;
-  }
-  h4:nth-child(1){
-    width: 100px;
-    border-right: 1px solid #E0E0E0;
-    color: #009688;
-    font-weight: bold;
-  }
-  h4:nth-child(2){
-    width: 649px;
-  }
-  .list-item-detail{
-    width: 100%;
-    font-size: 24px;
-    height:61px;
-    line-height: 61px;
-  }
-  .list-item-detail p{
-    float: left;
-    line-height:61px;
-    text-align: center;
-  }
-  .list-item-name{
-    width: 200px;
-    background-color: #009688;
-    color:#fff;
-    border-top: 1px solid #009688;
-  }
-  .list-item-value{
-    width: 550px;
-    border-top: 1px solid #E0E0E0;
-  }
-  .list-value-box{
-    height:900px;
-    overflow: scroll;
-  }
-  /*....*/
+
   .icon-caidan{
     font-size:70px;
     float: right;

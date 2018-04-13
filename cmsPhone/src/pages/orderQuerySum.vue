@@ -97,13 +97,43 @@ export default {
 </script>
 
 <style scoped>
-	.oderQuery-continer{
-	}
+	.list-box{
+    width: 100%;
+  }
+  .list-title-box{
+    background: #F0F0F0;
+    height:80px;
+    line-height: 80px;
+  }
+  .list-title,.list-item{
+    float:left;
+    height:80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 26px;
+    border-right: 1px solid #E0E0E0
+  }
+  .list-title{
+    font-weight: bold;
+  }
+  .list-item-time{
+    color: #9D9D9D;
+  }
+  .list-value{
+    border-bottom: 1px solid #E0E0E0
+  }
+  .clearFloat:after{
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height:0;
+    content: ".";
+  }
+  .clearFloat{
+    zoom:1;
+  }
 	.oderQuery-box{
 		padding: 0 30px;
-	}
-	.lotNotice{
-		margin: 30px 0;
 	}
 	.list-content{
 		margin-top: 50px;

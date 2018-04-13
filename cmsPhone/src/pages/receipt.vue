@@ -1,35 +1,17 @@
 <template>
 	<div class="rec-pay-continer">
 		<h1 class="rec-pay-title">支付产品</h1>
-		<div class="list-box">
-			<div class="list-content">
-				<div class="list-title-box">
-					<h3 class="list-title" v-for="(item,index) in bankTitles">{{item}}</h3>
-				</div>
-				<div class="list-value-box">
-					<div class="list-value" v-for="(item,index) in bankCardLists">
-						<ul class="clearFloat">
-							<li class="list-item">{{item.name}}</li>
-							<li class="list-item">{{item.state}}</li>
-							<li class="list-item">{{item.rate}}</li>
-							<li class="list-item">{{item.minSum}}</li>
-							<li class="list-item">{{item.maxSum}}</li>
-							<li class="list-item">{{item.md5Key}}</li>
-							<li class="list-item">{{item.signTime}}</li>
-							<li class="list-item">{{item.expireTime}}</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
+		<check-list :listTitleslots="receiptTitles" :listslots="bankCardLists" :tilteslots="bankTitles"></check-list>
 	</div>
 </template>
 
 <script>
 import VSelection from '../components/base/selection'
+import checkList from '../components/checkList'
 export default {
 	components:{
-		VSelection
+		VSelection,
+		checkList
 	},
 	data () {
 	    return {
@@ -95,15 +77,19 @@ export default {
 	          expireTime: '2019-03-17 00:00:00' 
 	        }
 	    	],
+	    	receiptTitles:{
+	    		name:"名称",
+	    		state:"状态",
+	    		rate:"费率(%)",
+	    		minSum:"单笔最小交易金额",
+	    		maxSum:"单笔最大交易金额",
+	    		md5Key:"md5秘钥",
+	    		signTime:"签约时间",
+	    		expireTime:"到期时间"
+	    	},
 	    	bankTitles:[
-	    		"名称",
-	    		"状态",
-	    		"费率(%)",
-	    		"单笔最小交易金额",
-	    		"单笔最大交易金额",
-	    		"md5秘钥",
-	    		"签约时间",
-	    		"到期时间"
+	    		"序号",
+	    		"银行账户+日期"
 	    	]
 		} 
 	}
@@ -111,58 +97,12 @@ export default {
 </script>
 
 <style scoped>
-	.rec-pay-continer{
-		padding:0 15px;
-	}
 	.rec-pay-title{
 		height: 90px;
 		line-height: 90px;
 		font-size: 32px;
 		border-bottom: 1px solid  #E0E0E0;
 		padding-left: 20px;
-	}
-	.list-content{width: 2099px;}
-	li:nth-child(2){
-		width: 120px;
-	}
-	li:nth-child(3){
-		width: 120px;
-	}
-	li:nth-child(4){
-		width: 250px;
-	}
-	li:nth-child(5){
-		width: 250px;
-	}
-	li:nth-child(6){
-		width: 550px;
-	}
-	li:nth-child(7){
-		width: 300px;
-	}
-	li:last-child{
-		width: 300px;
-	}
-	h3:nth-child(2){
-		width: 120px;
-	}
-	h3:nth-child(3){
-		width: 120px;
-	}
-	h3:nth-child(4){
-		width: 250px;
-	}
-	h3:nth-child(5){
-		width: 250px;
-	}
-	h3:nth-child(6){
-		width: 550px;
-	}
-	h3:nth-child(7){
-		width: 300px;
-	}
-	h3:last-child{
-		width: 300px;
 	}
 
 </style>
