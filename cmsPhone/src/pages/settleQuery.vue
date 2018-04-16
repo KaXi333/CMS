@@ -37,7 +37,7 @@
 				<button @click="orderListBackBtn" class="checkBtn" type="">返回</button>
 				<button class="checkBtn" type="">导出</button>
 			</div>
-			<check-list :listTitleslots="listTitle" :listslots="bankCardLists" :tilteslots="bankTitles"></check-list>
+			<check-list :listTitleslots="listTitle" :listslots="bankCardLists" :tilteslots="bankTitles" :showTitle="showTitles"></check-list>
 		</div>
 		</transition>
 	</div>
@@ -230,7 +230,11 @@ export default {
 	    	bankTitles:[
 	    		"序号",
 	    		"银行账户+日期"
-	    	]
+	    	],
+	    	showTitles:[
+	    		"state",
+	    		"name"
+	    	],
 		} 
 	}
 }

@@ -13,6 +13,9 @@
           </div>
         </div>
       <my-menu v-show="isShowMenuList" @on-goPath="goPathShow"></my-menu>
+      <div class="change-lang-btn">
+        <span @click="enLang">English</span>|<span @click="cnLang">中文</span>
+      </div>
   </div>
 </template>
 
@@ -23,6 +26,14 @@ export default {
     myMenu:menu
   },
   methods:{
+    //设置成英文
+    enLang(){
+      this.$i18n.locale='en'
+    },
+    //设置成中文
+    cnLang(){
+      this.$i18n.locale='cn'
+    },
     //菜单点击事件
     hasMenuBtn(){
       this.isShowMenuList=!this.isShowMenuList
@@ -62,8 +73,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
- .bodyConent{
+ .change-lang-btn{
+  position: fixed;
+  right:0;
+  top:0;
+  width: 250px;
+  height:100px;
+  color: #45bda6;
+  font-size: 30px;
+  text-align: center;
+  line-height: 100px;
  }
- .app-content{
- }
+ .change-lang-btn span{
+    margin:0 20px;
+  }
 </style>

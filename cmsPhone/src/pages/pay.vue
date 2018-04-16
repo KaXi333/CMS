@@ -1,7 +1,7 @@
 <template>
 	<div class="rec-pay-continer">
 		<h1 class="rec-pay-title">提现产品</h1>
-		<check-list :listTitleslots="receiptTitles" :listslots="bankCardLists" :tilteslots="bankTitles"></check-list>
+		<check-list :listTitleslots="receiptTitles" :listslots="bankCardLists" :tilteslots="bankTitles" :showTitle="showTitles"></check-list>
 	</div>
 </template>
 
@@ -77,8 +77,12 @@ export default {
 	    	},
 	    	bankTitles:[
 	    		"序号",
-	    		"银行账户+日期"
-	    	]
+	    		"结算类型+签约时间"
+	    	],
+	    	showTitles:[
+	    		"state",
+	    		"name"
+	    	],
 		} 
 	}
 }

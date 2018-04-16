@@ -10,8 +10,8 @@
 							<ul @click="checkDetailBtn(index)" class="clearFloat">
 								<li class="list-item list-item-num">{{index+1}}</li>
 								<li class="list-item list-item-tit">
-									<span>{{item.rate}}</span>
-									<span class="list-item-time">{{'('+item.name+')'}}</span>
+									<span>{{item[showTitle[0]]}}</span>
+									<span class="list-item-time">{{'('+item[showTitle[1]]+')'}}</span>
 									<i class="iconfont" :class="[index===nowIndex?'icon-xiaosanjiaoup':'icon-sanjiao']"></i>
 								</li>
 							</ul>
@@ -41,6 +41,13 @@ export default {
 			}]
 		},
 		listslots:{
+			type:Array,
+			default:[{
+				flex:1,
+				values:[]
+			}]
+		},
+		showTitle:{
 			type:Array,
 			default:[{
 				flex:1,

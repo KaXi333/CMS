@@ -1,144 +1,106 @@
 <template>
 	<div class="bankCardList-continer">
-		<div class="bankCardCheck-box">
-			<div class="check-input-value"><input type="text" placeholder="请输入名称"></div>
-			<v-selection :selections="Types"></v-selection>
-			<button class="checkBtn" type="">查询</button>
-		</div>
-		<div class="list-box">
-			<div class="list-content">
-				<div class="list-title-box">
-					<h3 class="list-title" v-for="(item,index) in bankTitles">{{item}}</h3>
-				</div>
-				<div class="list-value-box">
-					<div class="list-value" v-for="(item,index) in bankCardLists">
-						<ul class="clearFloat">
-							<li class="list-item">{{item.name}}</li>
-							<li class="list-item">{{item.bankAccount}}</li>
-							<li class="list-item">{{item.network}}</li>
-							<li class="list-item">{{item.note}}</li>
-							<li class="list-item">
-							  <button class="editBtn">授权</button>
-								<button class="editBtn">编辑</button>
-								<button class="delBtn">删除</button>
-							</li>
-						</ul>
-					</div>
-				</div>
+		<transition name="oderQuery">
+		<div class="bankCardCheck-box" v-show="!orderListShowContral">
+			<div class="input-box">
+				<h2 class="input-name">名称</h2>
+				<div class="input-value"><input type="text" placeholder="请输入名称"></div>
+			</div>
+			<div class="input-box">
+				  <h2 class="input-name">状态</h2>
+					<picker :slots="userStateslots"></picker>
+			</div>
+			<div class="checkBtn-box">
+				<button @click="orderCheckListBtn" class="checkBtn longCheckBtn" type="">查询</button>
 			</div>
 		</div>
+	</transition>
+	<transition name="oderList">
+		<div class="orderCheckList" v-if="orderListShowContral">
+			<div class="lotNotice">
+				<button @click="orderListBackBtn" class="checkBtn" type="">返回</button>
+			</div>
+			<check-list :listTitleslots="listTitle" :listslots="bankCardLists" :tilteslots="bankTitles" :showTitle="showTitles"></check-list>
+		</div>
+	</transition>
 	</div>
 </template>
 
 <script>
-import VSelection from '../components/base/selection'
+import picker from '../components/base/picker'
+import checkList from '../components/checkList'
 export default {
 	components:{
-		VSelection
+		picker,
+		checkList
+	},
+	methods:{
+		//订单查询按钮
+		orderCheckListBtn(){
+			this.orderListShowContral=!this.orderListShowContral
+		},
+		//返回按钮
+		orderListBackBtn(){
+			this.orderListShowContral=!this.orderListShowContral
+		}
 	},
 	data () {
 	    return {
-	    	Types:[
+	      orderListShowContral:'',
+	    	userStateslots:[
 	    		{
-		          label: '状态',
-		          value: 0
-		        },
-		        {
-		          label: '微信H5',
-		          value: 1
-		        },
-		        {
-		          label: '网银支付',
-		          value: 2
-		        },
-	    	],
+	    			flex: 1,
+	    			values: ['正常', '禁用'],
+	    			textAlign:"center"
+	    		}
+	    	] ,
 	    	bankCardLists:[
     		  {
-	          name: '吴尊林',
-	          bankAccount: '6217007200050257412' ,
-	          network: '中国建设银行股份有限公司深圳盐田支行',
+	          name: '陈冠希',
+	          bankAccount: '5625007205632255841' ,
+	          network: '中国建设银行股份有限公司深圳南山支行',
 	          note: '支付'
 	        },
 	        {
-	          name: '谷磊',
-	          bankAccount: '6217007200050257412' ,
+	          name: '杜兰特',
+	          bankAccount: '5625007205632255841' ,
 	          network: '上海浦东发展银行股份有限公司广州分行',
 	          note: '支付'
 	        },
 	        {
-	          name: '周杰伦',
-	          bankAccount: '6217007200050257412' ,
-	          network: '中国平安银行股份有限公司台湾高雄支行',
+	          name: '科比',
+	          bankAccount: '5625007205632255841' ,
+	          network: '中国平安银行股份有限公司深圳罗湖支行',
 	          note: '支付'
 	        },
 	        {
 	          name: 'Jay',
-	          bankAccount: '6217007200050257412' ,
+	          bankAccount: '5625007205632255841' ,
 	          network: '中国工商银行股份有限公司深圳龙华支行',
 	          note: '支付'
 	        }
 	    	],
 	    	bankTitles:[
-	    		"编号",
-	    		"名称",
-	    		"邮箱",
-	    		"状态",
-	    		"操作"
-	    	]
+	    		"序号",
+	    		"名称+邮箱"
+	    	],
+	    	showTitles:[
+	    		"bankAccount",
+	    		"name"
+	    	],
+	    	listTitle:{
+		    		name: '账户名',
+	          bankAccount: '银行账户' ,
+	          network: '开户网点',
+	          note: '备注'
+        }
 		} 
 	}
 }
 </script>
 
 <style scoped>
-	.check-value{
-		margin-right: 25px;
-		background: #fff;
-	}
-	.check-value input{
-	    width: 230px;
-	    font-size: 24px;
-	  }
-	.bankCardList-continer{
-		padding:20px 15px;
-	}
 	.bankCardCheck-box{
-		background: #F0F0F0;
-		padding: 20px 20px;
-	}
-	.list-item button{
-		width: 80px;
-		height:50px;
-		line-height: 50px;
-		border: none;
-    color:#fff;
-    font-size: 26px;
-    line-height: 50px;
-	}
-	.editBtn{
-		margin-right: 15px;
-		background: #009688;
-	}
-	.delBtn{
-		background: #FF5809;
-	}
-	.list-content{width: 1675px;}
-	li:nth-child(2){
-		width: 370px;
-	}
-	li:nth-child(3){
-		width: 510px;
-	}
-	li:last-child{
-		width: 340px;
-	}
-	h3:nth-child(2){
-		width: 370px;
-	}
-	h3:nth-child(3){
-		width: 510px;
-	}
-	h3:last-child{
-		width: 340px;
+		padding: 0 30px;
 	}
 </style>
