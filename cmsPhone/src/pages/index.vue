@@ -6,21 +6,21 @@
 					<i class="iconfont icon-dingdan"></i>
 					<div class="trade-detail">
 						<span class="trade-num">0</span>
-						<h3 class="trade-title">今日交易订单</h3>
+						<h3 class="trade-title">{{$t("index.daytrading")}}</h3>
 					</div>
 				</div>
 				<div class="trade-list-box">
 					<i class="iconfont icon-dingdan"></i>
 					<div class="trade-detail">
 						<span class="trade-num">2</span>
-						<h3 class="trade-title">本周交易订单</h3>
+						<h3 class="trade-title">{{$t("index.weektrading")}}</h3>
 					</div>
 				</div>
 				<div class="trade-list-box">
 					<i class="iconfont icon-dingdan"></i>
 					<div class="trade-detail">
 						<span class="trade-num">38</span>
-						<h3 class="trade-title">本月交易订单</h3>
+						<h3 class="trade-title">{{$t("index.monthtrading")}}</h3>
 					</div>
 				</div>
 			</div>
@@ -29,21 +29,21 @@
 					<i class="iconfont icon-jiaoyi"></i>
 					<div class="trade-detail">
 						<span class="trade-num">0</span>
-						<h3 class="trade-title">今日交易订单</h3>
+						<h3 class="trade-title">{{$t("index.dayamount")}}</h3>
 					</div>
 				</div>
 				<div class="trade-list-box">
 					<i class="iconfont icon-jiaoyi"></i>
 					<div class="trade-detail">
 						<span class="trade-num">2</span>
-						<h3 class="trade-title">本周交易订单</h3>
+						<h3 class="trade-title">{{$t("index.weekamount")}}</h3>
 					</div>
 				</div>
 				<div class="trade-list-box">
 					<i class="iconfont icon-jiaoyi"></i>
 					<div class="trade-detail">
 						<span class="trade-num">38</span>
-						<h3 class="trade-title">本月交易订单</h3>
+						<h3 class="trade-title">{{$t("index.monthamount")}}</h3>
 					</div>
 				</div>
 			</div>

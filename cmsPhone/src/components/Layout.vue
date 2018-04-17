@@ -1,6 +1,6 @@
 <template>
   <div style="height:100%">
-      <div ref="menuTitleHeight" class="head-title">管理系统</div>
+      <div ref="menuTitleHeight" class="head-title">{{$t("Layout.headerTitle")}}</div>
         <div :style="{height:bodyConentH}" class="bodyConent" :class="[ifAddClassLeft?'addClassLeft':'delClassLeft']">
           <div class="menu-box">
             <h2 class="menu-title">{{tabCont}}</h2>
@@ -77,10 +77,10 @@ export default {
   position: fixed;
   right:0;
   top:0;
-  width: 250px;
+  width: 230px;
   height:100px;
   color: #45bda6;
-  font-size: 30px;
+  font-size: 26px;
   text-align: center;
   line-height: 100px;
  }
